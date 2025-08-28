@@ -103,7 +103,8 @@ document.addEventListener('DOMContentLoaded', function() {
     
     function validatePassword(password) {
         // Password must be at least 8 characters with at least one uppercase letter, one lowercase letter, and one number
-        const re = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
+        // Also allowing special characters like underscore, dash, etc.
+        const re = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d_\-!@#$%^&*()+=]{8,}$/;
         return re.test(password);
     }
     
