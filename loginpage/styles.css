@@ -19,6 +19,33 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.welcome-image {
+    width: 100%;
+    max-width: 600px;
+    margin-bottom: 20px;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    background-color: #fff;
+    padding: 5px;
+    z-index: 20;
+    position: relative;
+}
+
+.welcome-image img {
+    width: 100%;
+    height: auto;
+    display: block !important;
+    transition: transform 0.5s ease;
+    border-radius: 12px;
+}
+
+.welcome-image img:hover {
+    transform: scale(1.03);
 }
 
 .login-card {
@@ -32,6 +59,8 @@ body {
     border: 2px solid rgba(240, 84, 35, 0.2);
     animation: slideIn 1s ease-out;
     text-align: center;
+    position: relative;
+    z-index: 10; /* Ensure login card stays above the floating coins */
 }
 
 @keyframes slideIn {
@@ -44,7 +73,7 @@ body {
     font-weight: bold;
     font-size: 2rem;
     margin-bottom: 1rem;
-    color: #f05423;
+    color:#4a4d4a;
     opacity: 0;
     transform: scale(0.6);
     animation: popUp 3s ease-in-out forwards;
@@ -65,6 +94,15 @@ body {
     font-weight: bold;
     margin-bottom: 0.5rem;
 }
+
+
+.logo h2 {
+    color: #66686a;
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
 
 .logo p {
     color: #7f8c8d;
@@ -183,6 +221,69 @@ body {
 .register-link a:hover {
     text-decoration: underline;
 }
+
+/* Coin Animation Styles */
+/* Enhanced Coin Animation Styles */
+.coin {
+    position: absolute;
+    z-index: 5; /* Behind the login card */
+    border-radius: 50%;
+    opacity: 0.7;
+    pointer-events: none;
+    filter: drop-shadow(0 5px 5px rgba(0, 0, 0, 0.3));
+}
+
+.coin-inner {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: radial-gradient(circle at 30% 30%, #FFD700, #FFA500);
+    box-shadow: 
+        inset 0 0 10px rgba(255, 255, 255, 0.6),
+        0 0 15px rgba(240, 84, 35, 0.4);
+    overflow: hidden;
+    border: 2px solid rgba(255, 215, 0, 0.8);
+}
+
+.coin-inner img {
+    width: 70%;
+    height: 70%;
+    object-fit: contain;
+    border-radius: 50%;
+}
+
+@keyframes float {
+    0% {
+        transform: translate(0, 0) rotate(0deg) scale(0.8);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.7;
+        transform: scale(1.1);
+    }
+    50% {
+        transform: translate(var(--moveX), var(--moveY)) rotate(180deg) scale(1);
+    }
+    90% {
+        opacity: 0.5;
+        transform: scale(0.9);
+    }
+    100% {
+        transform: translate(var(--finalX), var(--finalY)) rotate(360deg) scale(0.8);
+        opacity: 0;
+    }
+}
+
+/* Add a subtle glow effect to the login card to enhance the premium feel */
+.login-card {
+    box-shadow: 
+        0 25px 50px rgba(0, 0, 0, 0.25),
+        0 0 30px rgba(240, 84, 35, 0.15);
+}
+
 
 @media (max-width: 768px) {
     .login-card {
