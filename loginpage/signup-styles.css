@@ -1,4 +1,8 @@
 /* Signup Page Specific Styles */
+body {
+    background: #25282a;
+}
+
 .signup-container {
     display: flex;
     flex-direction: row;
