@@ -39,26 +39,4 @@ function showAlert(message) {
     alert(message);
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-    const sendMoneyForm = document.getElementById('sendMoneyForm');
-    const progressContainer = document.querySelector('.progress-container');
-    const progressBar = document.querySelector('.progress-bar');
-    const progressText = document.querySelector('.progress-text');
-
-    sendMoneyForm.addEventListener('submit', (event) => {
-        event.preventDefault();
-
-        // Show the progress container
-        progressContainer.style.display = 'block';
-
-        // Start the progress bar animation
-        progressBar.style.width = '100%';
-
-        // Simulate sending process
-        progressText.textContent = 'Sending...';
-        setTimeout(() => {
-            progressText.textContent = 'Money Sent Successfully!';
-            progressBar.style.background = 'green';
-        }, 2000);
-    });
-});
+// Optional: Add more interactivity or animations as needed
