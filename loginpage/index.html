@@ -8,7 +8,8 @@
 </head>
 <body>
     <div class="container">
-        <div class="login-card">
+        <!-- Login Page -->
+        <div class="login-card" id="loginPage">
             <div class="greeting-heading" id="greetingHeading">Hello</div>
 
             <div class="logo">
@@ -17,7 +18,7 @@
                 <p>Your trusted financial partner</p>
             </div>
             
-            <form id="loginForm">
+            <form id="loginForm" onsubmit="handleLogin(event)">
                 <div class="form-group">
                     <label for="email">Email or Phone</label>
                     <input type="text" id="email" name="email" required placeholder="Enter your email or phone number">
@@ -43,9 +44,20 @@
                 Don't have an account? <a href="signup.html">Sign up</a>
             </div>
         </div>
-    </div>
 
+<<<<<<< HEAD
+        <div class="send-money-card" id="sendPage" style="display: none;">
+            <div class="header">
+                <h1>Welcome to Send Money</h1>
+                <p id="user-info"></p>
+            </div>
+            <p>This is where the Send Money functionality would be implemented.</p>
+            <button onclick="logout()">Logout</button>
+        </div>
+    </div>
+=======
     <script src="script.js"></script>
     <script src="coin-animation.js"></script>
+>>>>>>> dc83907d8a4923c3fd5981a4c622613c55076492
 </body>
 </html>

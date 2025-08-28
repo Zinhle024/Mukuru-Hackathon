@@ -10,7 +10,7 @@
       --mukuru-charcoal: #333333;
       --mukuru-dark-gray: #444444;
       --mukuru-light-gray: #f5f5f5;
-      --mukuru-accent: #f05423; /* Mukuru orange accent */
+      --mukuru-accent: #FF7A00; /* Mukuru orange accent */
       --mukuru-white: #ffffff;
       --mukuru-green: #3CB371;
       --mukuru-red: #E2231A;
@@ -139,7 +139,7 @@
 
   <section class="balance">
     <h2>Current Points</h2>
-    <div class="points">5,420 pts</div>
+    <div class="points" id="points-counter">0 pts</div>
   </section>
 
   <section class="history">
@@ -176,6 +176,26 @@
     <button class="btn">View Full Statement</button>
     <button class="btn">Redeem Points</button>
   </div>
+
+  <script>
+    // Animate points counter
+    function animateCounter(id, target, duration) {
+      const element = document.getElementById(id);
+      let start = 0;
+      const increment = target / (duration / 16); // ~60fps
+      const timer = setInterval(() => {
+        start += increment;
+        if (start >= target) {
+          start = target;
+          clearInterval(timer);
+        }
+        element.textContent = Math.floor(start).toLocaleString() + " pts";
+      }, 16);
+    }
+
+    // Example: Animate to 5420 over 2 seconds
+    animateCounter("points-counter", 5420, 2000);
+  </script>
 
 </body>
 </html>
