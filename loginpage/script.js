@@ -37,6 +37,5 @@ document.getElementById('loginForm').addEventListener('submit', function(e) {
 
 function showAlert(message) {
     alert(message);
-}
 
-// Optional: Add more interactivity or animations as needed
+}
