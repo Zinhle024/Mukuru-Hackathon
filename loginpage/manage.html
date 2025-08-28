@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Rewards</title>
+  <style>
+    /* Mukuru-inspired colors */
+    :root {
+      --mukuru-charcoal: #333333;
+      --mukuru-dark-gray: #444444;
+      --mukuru-light-gray: #f5f5f5;
+      --mukuru-accent: #FF7A00; /* Mukuru orange accent */
+      --mukuru-white: #ffffff;
+      --mukuru-green: #3CB371;
+      --mukuru-red: #E2231A;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--mukuru-charcoal);
+      color: var(--mukuru-white);
+    }
+
+    header {
+      background-color: var(--mukuru-dark-gray);
+      padding: 1.5rem;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2rem;
+      font-weight: bold;
+    }
+
+    header p {
+      margin: 0.3rem 0 0;
+      color: var(--mukuru-light-gray);
+    }
+
+    .balance {
+      text-align: center;
+      background-color: var(--mukuru-dark-gray);
+      margin: 2rem auto;
+      padding: 2rem;
+      border-radius: 12px;
+      width: 80%;
+      max-width: 500px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    }
+
+    .balance h2 {
+      margin: 0;
+      font-size: 1.2rem;
+      color: var(--mukuru-light-gray);
+    }
+
+    .balance .points {
+      font-size: 3rem;
+      font-weight: bold;
+      color: var(--mukuru-accent);
+      margin: 1rem 0 0;
+    }
+
+    .history {
+      width: 90%;
+      max-width: 800px;
+      margin: 2rem auto;
+      background: var(--mukuru-dark-gray);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    }
+
+    .history h2 {
+      margin: 0;
+      padding: 1rem;
+      background: var(--mukuru-accent);
+      font-size: 1.3rem;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      padding: 1rem;
+      text-align: left;
+      border-bottom: 1px solid var(--mukuru-charcoal);
+    }
+
+    th {
+      background-color: var(--mukuru-dark-gray);
+      color: var(--mukuru-light-gray);
+      font-weight: 600;
+    }
+
+    td.positive {
+      color: var(--mukuru-green);
+      font-weight: bold;
+    }
+
+    td.negative {
+      color: var(--mukuru-red);
+      font-weight: bold;
+    }
+
+    .actions {
+      text-align: center;
+      margin: 2rem;
+    }
+
+    .btn {
+      background: var(--mukuru-accent);
+      color: var(--mukuru-white);
+      padding: 0.8rem 1.5rem;
+      margin: 0.5rem;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .btn:hover {
+      background: #e86a00;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>My Rewards</h1>
+    <p>View your current points balance & recent activity</p>
+  </header>
+
+  <section class="balance">
+    <h2>Current Points</h2>
+    <div class="points" id="points-counter">0 pts</div>
+  </section>
+
+  <section class="history">
+    <h2>Transaction History</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Description</th>
+          <th>Points</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>28 Aug 2025</td>
+          <td>Coffee Shop — Purchase</td>
+          <td class="positive">+120</td>
+        </tr>
+        <tr>
+          <td>25 Aug 2025</td>
+          <td>Redeemed for Gift Voucher</td>
+          <td class="negative">−300</td>
+        </tr>
+        <tr>
+          <td>22 Aug 2025</td>
+          <td>Grocery Store — Purchase</td>
+          <td class="positive">+200</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <div class="actions">
+    <button class="btn">View Full Statement</button>
+    <button class="btn">Redeem Points</button>
+  </div>
+
+  <script>
+    // Animate points counter
+    function animateCounter(id, target, duration) {
+      const element = document.getElementById(id);
+      let start = 0;
+      const increment = target / (duration / 16); // ~60fps
+      const timer = setInterval(() => {
+        start += increment;
+        if (start >= target) {
+          start = target;
+          clearInterval(timer);
+        }
+        element.textContent = Math.floor(start).toLocaleString() + " pts";
+      }, 16);
+    }
+
+    // Example: Animate to 5420 over 2 seconds
+    animateCounter("points-counter", 5420, 2000);
+  </script>
+
+</body>
+</html>
