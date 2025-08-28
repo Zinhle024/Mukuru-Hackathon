@@ -37,6 +37,7 @@ document.getElementById('loginForm').addEventListener('submit', function(e) {
 
 function showAlert(message) {
     alert(message);
+<<<<<<< Updated upstream
 }
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -62,3 +63,43 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 2000);
     });
 });
+=======
+
+document.getElementById('loginForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+
+    if (email && password) {
+        try {
+            const response = await fetch('http://127.0.0.1:8000/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    email: email,
+                    password: password,
+                    send_via: "email" // or "sms"
+                })
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                alert(data.message); // OTP sent
+                // Optionally, redirect to OTP verification page
+                // window.location.href = "verify-otp.html";
+            } else {
+                alert(data.detail || "Login failed");
+            }
+        } catch (err) {
+            console.error(err);
+            alert("Could not connect to server");
+        }
+    }
+});
+
+}
+>>>>>>> Stashed changes
