@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Send Money - Mukuru</title>
+    <link rel="stylesheet" href="send.css">
+    <script src="sendpage.js" defer></script>
+</head>
+<body>
+    <div class="container">
+
+        <div class="card send-money-card">
+            <h1><i class="fas fa-paper-plane"></i> Send Money</h1>
+            <form id="sendMoneyForm">
+                    <input type="text" placeholder="e.g. DimaKatso Sakes" required>
+                    <input type="tel" placeholder="e.g. 0712345678" required pattern="[0-9]{10,15}">
+                <input type="number" placeholder="e.g. R 500" required>
+                <div class="button-row">
+                    <button type="submit"><i class="fas fa-paper-plane"></i> Send</button>
+                    <button type="button" class="manage-btn" onclick="window.location.href='manage.html'">Go to Manage Page</button>
+                </div>
+            </form>
+
+            <!-- Progress Bar -->
+            <div class="progress-container">
+                <div class="progress-bar"></div>
+                <span class="progress-text"></span>
+            </div>
+        </div>
+
+        <!-- Plane Animation -->
+        <div class="plane" id="plane">✈️</div>
+
+        <!-- Points and History -->
+        <div class="points-section">
+            <h3><i class="fas fa-coins"></i> Your Points Balance</h3>
+            <p id="balance">0 <span class="star-icon">⭐</span></p>
+            <div id="pointsPopup" class="popup">+0 ⭐</div>
+
+            <h4><i class="fas fa-history"></i> Transaction History</h4>
+            <ul id="transactionHistory" class="timeline"></ul>
+        </div>
+
+        <!-- Reward Tiers -->
+        <div class="tiers">
+            <h3><i class="fas fa-trophy"></i> Reward Tiers</h3>
+            <div class="tier-display">
+                <div class="tier-icon" id="tierIcon">🥉</div>
+                <div>
+                    <p id="currentTier">Current Tier: Bronze</p>
+                    <p id="tierBenefits">Benefits: 1x Points, Basic Rewards</p>
+                </div>
+            </div>
+            <div class="tier-progress">
+                <div class="tier-bar" id="tierBar"></div>
+            </div>
+            <p id="tierProgress">50/100 points to reach Silver</p>
+        </div>
+
+        <!-- Badges Section -->
+        <div class="badges-section">
+            <h3><i class="fas fa-medal"></i> Achievement Badges</h3>
+            <div class="badges-container">
+                <div class="badge">
+                    <i class="fas fa-medal"></i>
+                    <div class="badge-name">First Transfer</div>
+                </div>
+                <div class="badge locked">
+                    <i class="fas fa-lock"></i>
+                    <div class="badge-name">Frequent Sender</div>
+                </div>
+                <div class="badge locked">
+                    <i class="fas fa-lock"></i>
+                    <div class="badge-name">Big Spender</div>
+                </div>
+                <div class="badge locked">
+                    <i class="fas fa-lock"></i>
+                    <div class="badge-name">Referral Master</div>
+                </div>
+                <div class="badge locked">
+                    <i class="fas fa-lock"></i>
+                    <div class="badge-name">Quick Sender</div>
+                </div>
+                <div class="badge locked">
+                    <i class="fas fa-lock"></i>
+                    <div class="badge-name">Global Citizen</div>
+                </div>
+            </div>
+        </div>
+</body>
+</html>
+

@@ -1,0 +1,513 @@
+/* Manage Page Button */
+.manage-btn {
+    background: #ff8800;
+    color: #fff;
+    border: none;
+    padding: 12px 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: background 0.3s ease, transform 0.2s ease;
+    display: block;
+    width: 100%;
+}
+.manage-btn:hover {
+    background: #ff8800;
+    color: #fff;
+    transform: translateY(-2px);
+}
+/* ===================
+           Base Styling
+        ==================== */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        body {
+            background: #0d0d0d;
+            font-family: "Segoe UI", Arial, sans-serif;
+            color: #ffffff;
+            margin: 0;
+            min-height: 100vh;
+            padding: 15px;
+            line-height: 1.5;
+        }
+
+        /* ===================
+           Container
+        ==================== */
+        .container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            max-width: 100%;
+            background: #1a1a1a;
+            padding: 20px;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 136, 0, 0.2);
+            margin: 0 auto;
+        }
+
+        /* ===================
+           Card Sections
+        ==================== */
+        .card, .points-section, .tiers, .rewards-marketplace, .leaderboard, .badges-section {
+            background: #222;
+            padding: 18px;
+            border-radius: 12px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .card:active, .points-section:active, .tiers:active, .rewards-marketplace:active, .leaderboard:active, .badges-section:active {
+            transform: translateY(2px);
+            box-shadow: 0 2px 10px rgba(255, 136, 0, 0.2);
+        }
+
+        /* ===================
+           Headings
+        ==================== */
+        h1, h2, h3, h4 {
+            color: #ff8800;
+            margin-bottom: 12px;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        h1 {
+            font-size: 1.6rem;
+        }
+
+        h2 {
+            font-size: 1.4rem;
+        }
+
+        h3 {
+            font-size: 1.2rem;
+        }
+
+        h4 {
+            font-size: 1.1rem;
+        }
+
+        /* ===================
+           Form Elements
+        ==================== */
+        form input {
+            width: 100%;
+            padding: 14px 16px;
+            margin: 8px 0;
+            border-radius: 8px;
+            border: 1px solid #333;
+            background: #111;
+            color: #fff;
+            font-size: 16px; /* Prevents zoom on iOS */
+            transition: border 0.3s ease, background 0.3s ease;
+        }
+
+        form input:focus {
+            border: 1px solid #ff8800;
+            background: #1a1a1a;
+            outline: none;
+        }
+
+        /* ===================
+           Buttons
+        ==================== */
+        button {
+            background: #ff8800;
+            color: #fff;
+            border: none;
+            padding: 14px 20px;
+            margin-top: 10px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 16px;
+            width: 100%;
+            transition: background 0.3s ease;
+            touch-action: manipulation;
+        }
+
+        button:active {
+            background: #ff6600;
+            transform: scale(0.98);
+        }
+
+        .redeem-btn {
+            padding: 10px 14px;
+            font-size: 14px;
+            width: auto;
+        }
+
+        /* ===================
+           Progress Bar
+        ==================== */
+        .progress-container {
+            background: #111;
+            border-radius: 10px;
+            margin-top: 15px;
+            height: 16px;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            width: 0;
+            background: linear-gradient(90deg, #ff8800, #ffaa33);
+            transition: width 0.4s ease;
+        }
+
+        .progress-text {
+            display: block;
+            text-align: center;
+            margin-top: 6px;
+            font-size: 14px;
+            color: #ffaa33;
+            font-weight: 600;
+        }
+
+        /* ===================
+           Points & History
+        ==================== */
+        #balance {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: #ffaa33;
+            text-align: center;
+            margin: 10px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+        }
+
+        .star-icon {
+            display: inline-block;
+            animation: rotateStar 3s infinite linear;
+            font-size: 1.6rem;
+        }
+
+        .popup {
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.4s ease, transform 0.3s ease;
+            transform: translateY(-5px);
+            color: #ffaa33;
+            font-weight: 600;
+            margin-top: 8px;
+            text-align: center;
+        }
+
+        .popup.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        /* Timeline */
+        .timeline {
+            list-style-type: none;
+            padding: 0;
+            max-height: 200px;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .timeline li {
+            margin: 8px 0;
+            padding: 10px;
+            border-left: 3px solid #ff8800;
+            padding-left: 12px;
+            background: rgba(255, 136, 0, 0.08);
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        /* ===================
+           Plane Animation
+        ==================== */
+        .plane {
+            font-size: 2.5rem;
+            text-align: center;
+            opacity: 0;
+            transform: translateX(-100px);
+            transition: all 0.5s ease;
+            margin: 10px 0;
+        }
+
+        .plane.fly {
+            opacity: 1;
+            transform: translateX(100px);
+        }
+
+        /* ===================
+           Tier Styling
+        ==================== */
+        .tier-progress {
+            background: #111;
+            border-radius: 10px;
+            margin: 15px 0;
+            height: 16px;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .tier-bar {
+            height: 100%;
+            width: 50%;
+            background: linear-gradient(90deg, #ff8800, #ffaa33);
+        }
+
+        #tierProgress {
+            text-align: center;
+            color: #ffaa33;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .tier-display {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .tier-icon {
+            font-size: 2.2rem;
+        }
+
+        /* ===================
+           Badges Section
+        ==================== */
+        .badges-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin-top: 15px;
+        }
+
+        .badge {
+            background: #1a1a1a;
+            border-radius: 10px;
+            padding: 12px 8px;
+            text-align: center;
+            transition: transform 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 90px;
+        }
+
+        .badge i {
+            font-size: 1.8rem;
+            color: #ffaa33;
+            margin-bottom: 5px;
+        }
+
+        .badge.locked i {
+            color: #555;
+        }
+
+        .badge-name {
+            font-size: 12px;
+            margin-top: 5px;
+            text-align: center;
+        }
+
+        /* ===================
+           Leaderboard
+        ==================== */
+        .leaderboard-list {
+            list-style-type: none;
+            padding: 0;
+            max-height: 250px;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .leaderboard-list li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 10px;
+            margin: 8px 0;
+            background: #1a1a1a;
+            border-radius: 8px;
+            font-size: 14px;
+        }
+
+        .leaderboard-position {
+            font-weight: bold;
+            color: #ffaa33;
+            width: 24px;
+            text-align: center;
+        }
+
+        .leaderboard-name {
+            flex-grow: 1;
+            margin: 0 10px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .leaderboard-points {
+            color: #ffaa33;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        /* ===================
+           Rewards Marketplace
+        ==================== */
+        .rewards-marketplace ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .rewards-marketplace li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 10px;
+            margin: 10px 0;
+            background: #1a1a1a;
+            border-radius: 8px;
+            font-size: 14px;
+            flex-wrap: wrap;
+        }
+
+        .rewards-marketplace li span {
+            margin-right: 10px;
+            flex: 1;
+        }
+
+        .cart-section {
+            margin-top: 20px;
+            border-top: 1px solid #333;
+            padding-top: 15px;
+        }
+
+        .cart-items {
+            min-height: 80px;
+            margin: 10px 0;
+            padding: 10px;
+            background: #1a1a1a;
+            border-radius: 8px;
+            font-size: 14px;
+        }
+
+        .cart-total {
+            display: flex;
+            justify-content: space-between;
+            font-weight: bold;
+            margin: 10px 0;
+            font-size: 16px;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+            padding: 8px;
+            background: #222;
+            border-radius: 6px;
+        }
+
+        .remove-btn {
+            padding: 6px 10px;
+            font-size: 12px;
+            width: auto;
+            margin-top: 0;
+        }
+
+        /* ===================
+           Navigation & Footer
+        ==================== */
+        .mobile-nav {
+            position: sticky;
+            bottom: 0;
+            background: #1a1a1a;
+            padding: 12px;
+            border-top: 1px solid rgba(255, 136, 0, 0.2);
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+
+        .nav-btn {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: #fff;
+            text-decoration: none;
+            font-size: 12px;
+            padding: 8px;
+        }
+
+        .nav-btn i {
+            font-size: 1.2rem;
+            margin-bottom: 4px;
+            color: #ff8800;
+        }
+
+        .nav-btn.active {
+            color: #ff8800;
+        }
+
+        /* ===================
+           Animations
+        ==================== */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes rotateStar {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* ===================
+           Responsive Tweaks
+        ==================== */
+        @media (min-width: 768px) {
+            body {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            
+            .container {
+                max-width: 600px;
+            }
+        }
+
+        /* Prevent zoom on iOS input focus */
+        @media screen and (max-width: 767px) {
+            input, select, textarea {
+                font-size: 16px !important;
+            }
+        }
+
+        /* Button Row for Form */
+.button-row {
+    display: flex;
+    gap: 12px;
+    margin-top: 10px;
+    flex-wrap: nowrap;
+}
+.button-row button {
+    flex: 1 1 0;
+    min-width: 0;
+    width: auto;
+    margin-top: 0;
+}
