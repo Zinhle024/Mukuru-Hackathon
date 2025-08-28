@@ -3,41 +3,37 @@ document.addEventListener('DOMContentLoaded', () => {
     const progressContainer = document.querySelector('.progress-container');
     const progressBar = document.querySelector('.progress-bar');
     const progressText = document.querySelector('.progress-text');
-
-    if (!sendMoneyForm || !progressContainer || !progressBar || !progressText) {
-        console.error('Required elements are missing from the DOM.');
-        return;
-    }
+    const plane = document.getElementById('plane');
 
     sendMoneyForm.addEventListener('submit', (event) => {
         event.preventDefault();
 
-        // Show the progress container
+        // Show progress bar and plane
         progressContainer.style.display = 'block';
-
-        // Reset bar before animation
         progressBar.style.width = '0%';
         progressBar.style.background = 'linear-gradient(90deg, #f05423, #ff8b50)';
         progressText.textContent = 'Sending...';
 
-        // Allow DOM to update before starting animation
-        setTimeout(() => {
-            progressBar.style.width = '100%';
-        }, 50);
+        plane.style.display = 'block';
+        plane.style.animation = 'flyPlane 3s linear forwards';
 
-        // After 2s, change text & bar color
+        // Start progress bar animation
+        setTimeout(() => { progressBar.style.width = '100%'; }, 50);
+
+        // Update text & bar color when done
         setTimeout(() => {
             progressText.textContent = 'Money Sent Successfully!';
             progressBar.style.background = 'green';
-        }, 2000);
+        }, 3000);
 
-        // Hide container & reset after 4s
+        // Reset everything after animation
         setTimeout(() => {
             progressContainer.style.display = 'none';
             progressBar.style.width = '0%';
             progressBar.style.background = 'linear-gradient(90deg, #f05423, #ff8b50)';
             progressText.textContent = '';
+            plane.style.display = 'none';
             sendMoneyForm.reset();
-        }, 4000);
+        }, 4500);
     });
 });

@@ -1,26 +1,33 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Send Money</title>
-    <link rel="stylesheet" href="styles.css">
-    <script src="script.js" defer></script>
+    <title>Send Money - Mukuru</title>
+    <link rel="stylesheet" href="sendpage.css">
+    <script src="sendpage.js" defer></script>
 </head>
 <body>
-    <div class="card send-money-card">
-        <h1>Send Money</h1>
-        <form id="sendMoneyForm">
-            <input type="text" id="recipientName" placeholder="Recipient Name" required>
-            <input type="number" id="amount" placeholder="Amount" required>
-            <button type="submit">Send</button>
-        </form>
+    <div class="container">
 
-        <!-- Money Sending Animation -->
-        <div class="progress-container" style="display:none;">
-            <div class="progress-bar"></div>
-            <span class="progress-text">Sending...</span>
+        <div class="card send-money-card">
+            <h1>Send Money</h1>
+            <form id="sendMoneyForm">
+                <input type="text" placeholder="Recipient Name" required>
+                <input type="number" placeholder="Amount" required>
+                <button type="submit">Send</button>
+            </form>
+
+            <!-- Progress Bar -->
+            <div class="progress-container">
+                <div class="progress-bar"></div>
+                <span class="progress-text"></span>
+            </div>
         </div>
+
+        <!-- Plane Animation -->
+        <div class="plane" id="plane">✈️</div>
+
     </div>
 </body>
 </html>
