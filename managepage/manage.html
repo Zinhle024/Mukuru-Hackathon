@@ -333,7 +333,11 @@
             document.querySelectorAll('.reward-item').forEach(item => {
                 item.addEventListener('click', function() {
                     const rewardName = this.querySelector('.reward-name').textContent;
-                    alert(`You've selected: ${rewardName}\n\nRedirecting to redemption page...`);
+                    if (rewardName === 'Digital Stickers') {
+                        window.location.href = '../rewardsCalendar/index.html';
+                    } else {
+                        alert(`You've selected: ${rewardName}\n\nRedirecting to redemption page...`);
+                    }
                 });
             });
         });
