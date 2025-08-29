@@ -13,7 +13,7 @@ html {
 body {
      
     background-size: cover; /* Ensure the image covers the entire page */
-    color: white; /* Default text color for better contrast */
+    color: black; /* Default text color for better contrast */
     font-family: 'Arial', sans-serif;
     height: 100vh;
     overflow: hidden;
@@ -45,7 +45,7 @@ body {
     max-width: 400px;
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 122, 0, 0.25); /* Orange accent border */
+    border: 1px solid rgba(255, 94, 0, 0.25); /* Orange accent border */
     animation: slideIn 1s ease-out;
     text-align: center;
     position: relative;
@@ -62,7 +62,7 @@ body {
     font-weight: bold;
     font-size: 2rem;
     margin-bottom: 1rem;
-    color:#4a4d4a;
+    color:#f2f7f2;
     opacity: 0;
     transform: scale(0.6);
     animation: popUp 3s ease-in-out forwards;
@@ -86,7 +86,7 @@ body {
 
 
 .logo h2 {
-    color: #66686a;
+    color: white;
     font-size: 2.5rem;
     font-weight: bold;
     margin-bottom: 0.5rem;
@@ -109,12 +109,13 @@ body {
 .form-group label {
     display: block;
     margin-bottom: 0.5rem;
-    color: #2c3e50;
+    color: #778ea5;
     font-weight: 500;
     font-size: 0.9rem;
 }
 
 .form-group input {
+    color: #000;
     width: 100%;
     padding: 1rem;
     border: 2px solid #e1e8ed;
