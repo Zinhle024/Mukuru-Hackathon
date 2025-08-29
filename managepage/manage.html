@@ -40,6 +40,88 @@
                     </div>
                 </div>
             </div>
+            
+            <!-- New Points Balance & Transaction History Card -->
+            <div class="card points-history-card">
+                <h2 class="card-title"><i class="fas fa-wallet"></i> Points Balance & History</h2>
+                
+                <div class="balance-summary">
+                    <div class="balance-label">Available Points Balance</div>
+                    <div class="balance-amount" id="balance-amount">5,420</div>
+                </div>
+                
+                <div class="transaction-filters">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="earned">Earned</button>
+                    <button class="filter-btn" data-filter="spent">Spent</button>
+                    <button class="filter-btn" data-filter="transfers">Transfers</button>
+                </div>
+                
+                <div class="transaction-list">
+                    <div class="transaction-item" data-type="earned">
+                        <div class="transaction-details">
+                            <div class="transaction-name">Coffee Shop Purchase</div>
+                            <div class="transaction-date">28 Aug 2025 • 10:24 AM</div>
+                        </div>
+                        <div class="transaction-amount positive">
+                            <i class="fas fa-plus-circle transaction-icon"></i>+120
+                        </div>
+                    </div>
+                    
+                    <div class="transaction-item" data-type="spent">
+                        <div class="transaction-details">
+                            <div class="transaction-name">Gift Voucher Redemption</div>
+                            <div class="transaction-date">25 Aug 2025 • 02:15 PM</div>
+                        </div>
+                        <div class="transaction-amount negative">
+                            <i class="fas fa-minus-circle transaction-icon"></i>-300
+                        </div>
+                    </div>
+                    
+                    <div class="transaction-item" data-type="earned">
+                        <div class="transaction-details">
+                            <div class="transaction-name">Grocery Store Purchase</div>
+                            <div class="transaction-date">22 Aug 2025 • 09:45 AM</div>
+                        </div>
+                        <div class="transaction-amount positive">
+                            <i class="fas fa-plus-circle transaction-icon"></i>+200
+                        </div>
+                    </div>
+                    
+                    <div class="transaction-item" data-type="earned">
+                        <div class="transaction-details">
+                            <div class="transaction-name">Referral Bonus</div>
+                            <div class="transaction-date">18 Aug 2025 • 11:30 AM</div>
+                        </div>
+                        <div class="transaction-amount positive">
+                            <i class="fas fa-plus-circle transaction-icon"></i>+500
+                        </div>
+                    </div>
+                    
+                    <div class="transaction-item" data-type="transfers">
+                        <div class="transaction-details">
+                            <div class="transaction-name">Points Transfer to Friend</div>
+                            <div class="transaction-date">15 Aug 2025 • 04:20 PM</div>
+                        </div>
+                        <div class="transaction-amount negative">
+                            <i class="fas fa-exchange-alt transaction-icon"></i>-250
+                        </div>
+                    </div>
+                    
+                    <div class="transaction-item" data-type="earned">
+                        <div class="transaction-details">
+                            <div class="transaction-name">Restaurant Dining</div>
+                            <div class="transaction-date">12 Aug 2025 • 07:45 PM</div>
+                        </div>
+                        <div class="transaction-amount positive">
+                            <i class="fas fa-plus-circle transaction-icon"></i>+180
+                        </div>
+                    </div>
+                </div>
+                
+                <a href="#" class="view-all">View Full Transaction History <i class="fas fa-arrow-right"></i></a>
+            </div>
+            
             <div class="card">
                 <h2 class="card-title"><i class="fas fa-history"></i> Recent Activity</h2>
                 <div class="history-list">
@@ -72,7 +154,7 @@
                         <div class="history-points positive">+500</div>
                     </div>
                 </div>
-                <a href="#" class="view-all">View Full History <i class="fas fa-arrow-right"></i></a>
+                
             </div>
             <div class="card">
                 <h2 class="card-title"><i class="fas fa-gift"></i> Rewards Marketplace</h2>
@@ -97,19 +179,6 @@
                         <div class="reward-name">Gift Voucher</div>
                         <div class="reward-cost">2,000 pts</div>
                     </div>
-                    <!-- New Reward: Greyhound Bus Discount -->
-    <div class="reward-item">
-        <div class="reward-icon"><i class="fas fa-bus"></i></div>
-        <div class="reward-name">Greyhound Bus Ticket Discount</div>
-        <div class="reward-cost">1,500 pts</div>
-    </div>
-    <!-- New Reward: Flight Discount -->
-    <div class="reward-item">
-        <div class="reward-icon"><i class="fas fa-plane"></i></div>
-        <div class="reward-name">Flight Ticket Discount</div>
-        <div class="reward-cost">3,500 pts</div>
-    </div>
-                    
                 </div>
                 <a href="#" class="view-all">Browse All Rewards <i class="fas fa-arrow-right"></i></a>
             </div>
@@ -167,9 +236,61 @@
                 }
             }, 16);
         }
+        
+        // Animate balance counter
+        function animateBalanceCounter(id, target, duration) {
+            const element = document.getElementById(id);
+            let start = 0;
+            const increment = target / (duration / 16);
+            const timer = setInterval(() => {
+                start += increment;
+                if (start >= target) {
+                    element.textContent = target.toLocaleString();
+                    clearInterval(timer);
+                } else {
+                    element.textContent = Math.floor(start).toLocaleString();
+                }
+            }, 16);
+        }
+        
+        // Transaction filtering functionality
+        function setupTransactionFilters() {
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const transactionItems = document.querySelectorAll('.transaction-item');
+            
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    // Remove active class from all buttons
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    
+                    // Add active class to clicked button
+                    button.classList.add('active');
+                    
+                    // Get filter type
+                    const filterType = button.getAttribute('data-filter');
+                    
+                    // Show/hide transactions based on filter
+                    transactionItems.forEach(item => {
+                        if (filterType === 'all') {
+                            item.style.display = 'flex';
+                        } else {
+                            if (item.getAttribute('data-type') === filterType) {
+                                item.style.display = 'flex';
+                            } else {
+                                item.style.display = 'none';
+                            }
+                        }
+                    });
+                });
+            });
+        }
+        
         // Start the animation when page loads
         window.addEventListener('load', function() {
             animateCounter("points-counter", 5420, 2000);
+            animateBalanceCounter("balance-amount", 5420, 2000);
+            setupTransactionFilters();
+            
             // Add interaction to reward items
             document.querySelectorAll('.reward-item').forEach(item => {
                 item.addEventListener('click', function() {
