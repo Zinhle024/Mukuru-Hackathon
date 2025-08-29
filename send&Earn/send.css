@@ -1,0 +1,376 @@
+* {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        body {
+            background: #0d0d0d;
+            font-family: "Segoe UI", Arial, sans-serif;
+            color: #ffffff;
+            margin: 0;
+            min-height: 100vh;
+            padding: 15px;
+            line-height: 1.5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Main container with three sections */
+        .main-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            max-width: 420px;
+            width: 100%;
+            margin: 0 auto;
+            background: #1a1a1a;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 102, 0, 0.3);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.25);
+            padding: 1.5rem;
+            overflow-y: auto;
+            max-height: 95vh;
+        }
+
+        /* Three content containers */
+        .content-container {
+            background: #222;
+            border-radius: 12px;
+            padding: 18px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Send Money Container */
+        .send-container {
+            position: relative;
+        }
+
+        /* Points & History Container */
+        .points-container {
+            margin-top: 10px;
+        }
+
+        /* Tiers & Badges Container */
+        .tiers-badges-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        /* Header with logo */
+        .header {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .logo {
+            height: 60px;
+            width: auto;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        /* Form styling */
+        h1, h2, h3, h4 {
+            color: #FF6600;
+            margin-bottom: 15px;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        h1 {
+            font-size: 1.6rem;
+        }
+
+        h3 {
+            font-size: 1.2rem;
+            text-align: left;
+            margin-bottom: 12px;
+        }
+
+        form input {
+            width: 100%;
+            padding: 14px 16px;
+            margin: 8px 0;
+            border-radius: 8px;
+            border: 1px solid #333;
+            background: #111;
+            color: #fff;
+            font-size: 16px;
+            transition: border 0.3s ease, background 0.3s ease;
+        }
+
+        form input:focus {
+            border: 1px solid #FF6600;
+            background: #1a1a1a;
+            outline: none;
+        }
+
+        /* Button styling */
+        .button-row {
+            display: flex;
+            gap: 12px;
+            margin-top: 15px;
+        }
+
+        button {
+            background: #FF6600;
+            color: #fff;
+            border: none;
+            padding: 14px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 16px;
+            flex: 1;
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+
+        button:active {
+            background: #cc5500;
+            transform: scale(0.98);
+        }
+
+        .manage-btn {
+            background: #333;
+        }
+
+        .manage-btn:hover {
+            background: #444;
+        }
+
+        /* Points section */
+        #balance {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #FF6600;
+            text-align: center;
+            margin: 15px 0;
+        }
+
+        .star-icon {
+            display: inline-block;
+            animation: rotateStar 3s infinite linear;
+            font-size: 1.6rem;
+        }
+
+        .timeline {
+            list-style-type: none;
+            padding: 0;
+            max-height: 150px;
+            overflow-y: auto;
+            margin-top: 15px;
+        }
+
+        .timeline li {
+            margin: 8px 0;
+            padding: 10px;
+            border-left: 3px solid #cc5500;
+            padding-left: 12px;
+            background: rgba(255, 102, 0, 0.1);
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        /* Tiers section */
+        .tier-display {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .tier-icon {
+            font-size: 2.5rem;
+        }
+
+        .tier-progress {
+            background: #111;
+            border-radius: 10px;
+            margin: 15px 0;
+            height: 16px;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .tier-bar {
+            height: 100%;
+            width: 50%;
+            background: linear-gradient(90deg, #cc5500, #FF6600);
+        }
+
+        #tierProgress {
+            text-align: center;
+            color: #FF6600;
+            font-weight: 600;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+
+        /* Badges section */
+        .badges-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin-top: 15px;
+        }
+
+        .badge {
+            background: #1a1a1a;
+            border-radius: 10px;
+            padding: 12px 8px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 90px;
+        }
+
+        .badge i {
+            font-size: 1.8rem;
+            color: #FF6600;
+            margin-bottom: 5px;
+        }
+
+        .badge.locked i {
+            color: #555;
+        }
+
+        .badge-name {
+            font-size: 12px;
+            margin-top: 5px;
+            text-align: center;
+        }
+
+        /* Celebration animation */
+        .celebration {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.5s ease;
+        }
+        
+        .celebration.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .celebration-content {
+            text-align: center;
+            background: #222;
+            padding: 2rem;
+            border-radius: 12px;
+            border: 2px solid #FF6600;
+            max-width: 80%;
+        }
+        
+        .celebration h2 {
+            color: #FF6600;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .celebration p {
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+        }
+        
+        .drum-icon {
+            font-size: 3rem;
+            margin: 1rem 0;
+            animation: pulse 1s infinite;
+        }
+        
+        .celebration-btn {
+            background: #FF6600;
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        /* Animations */
+        @keyframes rotateStar {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 480px) {
+            .main-container {
+                padding: 1rem;
+                max-height: 98vh;
+            }
+            
+            .content-container {
+                padding: 15px;
+            }
+            
+            .button-row {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .badges-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            h1 {
+                font-size: 1.4rem;
+            }
+            
+            h3 {
+                font-size: 1.1rem;
+            }
+            
+            .celebration-content {
+                padding: 1.5rem;
+            }
+            
+            .celebration h2 {
+                font-size: 1.5rem;
+            }
+        }
+
+        /* Scrollbar styling */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #1a1a1a;
+            border-radius: 10px;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: #FF6600;
+            border-radius: 10px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: #cc5500;
+        }

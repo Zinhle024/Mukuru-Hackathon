@@ -7,6 +7,7 @@
 html {
     background: url('https://africabusinesscommunities.com/assets/components/phpthumbof/cache/Mukuru.397cdba4b70f1fe02af3fb034d2f2421.png') no-repeat center center;
     background-size: cover; 
+    overflow: hidden;
 }
 
 body {
@@ -17,7 +18,7 @@ body {
     height: 100vh;
     overflow: hidden;
     position: relative;
-    background-color: #f05423;
+    background-color:#1a1a1a;
 }
 
 .container {
@@ -34,14 +35,17 @@ body {
 
 
 .login-card {
-    background: rgba(255, 255, 255, 0.98);
-    border-radius: 20px;
+    background: rgba(26, 26, 26, 0.55);
+    border-radius: 16px;
     padding: 3rem 2.5rem;
-    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+    box-shadow: 
+        0 8px 32px 0 rgba(31, 38, 135, 0.25),
+        0 25px 50px rgba(0, 0, 0, 0.25);
     width: 100%;
     max-width: 400px;
-    backdrop-filter: blur(15px);
-    border: 2px solid rgba(240, 84, 35, 0.2);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 122, 0, 0.25); /* Orange accent border */
     animation: slideIn 1s ease-out;
     text-align: center;
     position: relative;
@@ -269,6 +273,13 @@ body {
         0 0 30px rgba(240, 84, 35, 0.15);
 }
 
+/* Make white text brighter */
+.login-card,
+.container,
+input, select, textarea {
+    color: #fff;
+    text-shadow: 0 1px 4px rgba(255,255,255,0.12);
+}
 
 @media (max-width: 768px) {
     .login-card {

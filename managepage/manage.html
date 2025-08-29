@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Rewards - Mukuru</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="manage.css">
+    <style>
+        :root {
+            --mukuru-charcoal: #0d0d0d;
+            --mukuru-dark: #1a1a1a;
+            --mukuru-card: #222;
+            --mukuru-orange: #FF6600;
+            --mukuru-orange-light: rgba(255, 102, 0, 0.15);
+            --mukuru-white: #fff;
+            --mukuru-light-text: #e0e0e0;
+            --mukuru-medium-text: #a0a0a0;
+            --mukuru-green: #4cd964;
+            --mukuru-purple: #8A2BE2;
+        }
+        @media (max-width: 900px) {
+            .dashboard {
+                grid-template-columns: 1fr;
+            }
+        }
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            nav {
+                justify-content: center;
+            }
+            .points-display {
+                font-size: 2.5rem;
+                padding: 1rem;
+            }
+            .rewards-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 480px) {
+            nav a {
+                padding: 0.4rem 0.8rem;
+                font-size: 0.9rem;
+            }
+            .points-display {
+                font-size: 2rem;
+            }
+            .card {
+                padding: 1rem;
+            }
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+            .rewards-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <i class="fas fa-fire"></i>
+                <span>Mukuru Rewards</span>
+            </div>
+            <nav>
+                <a href="../send&Earn/send.html"><i class="fas fa-paper-plane"></i> Send & Earn</a>
+                <a href="signup.html"><i class="fas fa-user-plus"></i> Sign Up</a>
+                <a href="index.html"><i class="fas fa-home"></i> Home</a>
+            </nav>
+        </header>
+        <div class="dashboard">
+            <div class="card points-card">
+                <h1>My Rewards</h1>
+                <p>Earn points with every transaction and redeem them for exciting rewards</p>
+                <div class="points-display pulse" id="points-counter">0 pts</div>
+                <div class="progress-section">
+                    <div class="progress-label">
+                        <span>Bronze Tier</span>
+                        <span>Gold Tier (5,000 pts)</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill"></div>
+                    </div>
+                    <div class="tier-badge">
+                        <i class="fas fa-crown"></i>
+                        <span>Silver Tier Member</span>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <h2 class="card-title"><i class="fas fa-history"></i> Recent Activity</h2>
+                <div class="history-list">
+                    <div class="history-item">
+                        <div class="history-details">
+                            <div class="history-name">Coffee Shop Purchase</div>
+                            <div class="history-date">28 Aug 2025</div>
+                        </div>
+                        <div class="history-points positive">+120</div>
+                    </div>
+                    <div class="history-item">
+                        <div class="history-details">
+                            <div class="history-name">Gift Voucher Redemption</div>
+                            <div class="history-date">25 Aug 2025</div>
+                        </div>
+                        <div class="history-points negative">-300</div>
+                    </div>
+                    <div class="history-item">
+                        <div class="history-details">
+                            <div class="history-name">Grocery Store Purchase</div>
+                            <div class="history-date">22 Aug 2025</div>
+                        </div>
+                        <div class="history-points positive">+200</div>
+                    </div>
+                    <div class="history-item">
+                        <div class="history-details">
+                            <div class="history-name">Referral Bonus</div>
+                            <div class="history-date">18 Aug 2025</div>
+                        </div>
+                        <div class="history-points positive">+500</div>
+                    </div>
+                </div>
+                <a href="#" class="view-all">View Full History <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="card">
+                <h2 class="card-title"><i class="fas fa-gift"></i> Rewards Marketplace</h2>
+                <div class="rewards-grid">
+                    <div class="reward-item">
+                        <div class="reward-icon"><i class="fas fa-ticket-alt"></i></div>
+                        <div class="reward-name">Movie Tickets</div>
+                        <div class="reward-cost">1,000 pts</div>
+                    </div>
+                    <div class="reward-item">
+                        <div class="reward-icon"><i class="fas fa-mobile-alt"></i></div>
+                        <div class="reward-name">Mobile Airtime</div>
+                        <div class="reward-cost">500 pts</div>
+                    </div>
+                    <div class="reward-item">
+                        <div class="reward-icon"><i class="fas fa-sticky-note"></i></div>
+                        <div class="reward-name">Digital Stickers</div>
+                        <div class="reward-cost">250 pts</div>
+                    </div>
+                    <div class="reward-item">
+                        <div class="reward-icon"><i class="fas fa-shopping-cart"></i></div>
+                        <div class="reward-name">Gift Voucher</div>
+                        <div class="reward-cost">2,000 pts</div>
+                    </div>
+                </div>
+                <a href="#" class="view-all">Browse All Rewards <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="card">
+                <h2 class="card-title"><i class="fas fa-trophy"></i> Achievements</h2>
+                <div class="achievements">
+                    <div class="achievement-item">
+                        <div class="achievement-icon"><i class="fas fa-paper-plane"></i></div>
+                        <div class="achievement-details">
+                            <div class="achievement-name">First Transfer</div>
+                            <div class="achievement-desc">Complete your first money transfer</div>
+                        </div>
+                        <div class="achievement-progress"><i class="fas fa-check-circle"></i></div>
+                    </div>
+                    <div class="achievement-item">
+                        <div class="achievement-icon"><i class="fas fa-users"></i></div>
+                        <div class="achievement-details">
+                            <div class="achievement-name">Referral Master</div>
+                            <div class="achievement-desc">Refer 5 friends to Mukuru</div>
+                        </div>
+                        <div class="achievement-progress">3/5</div>
+                    </div>
+                    <div class="achievement-item">
+                        <div class="achievement-icon"><i class="fas fa-store"></i></div>
+                        <div class="achievement-details">
+                            <div class="achievement-name">Frequent Shopper</div>
+                            <div class="achievement-desc">Make 10 purchases with Mukuru Card</div>
+                        </div>
+                        <div class="achievement-progress">7/10</div>
+                    </div>
+                </div>
+                <a href="#" class="view-all">View All Achievements <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+        <div class="actions">
+            <button class="btn"><i class="fas fa-file-alt"></i> View Full Statement</button>
+            <button class="btn btn-outline"><i class="fas fa-store"></i> Rewards Marketplace</button>
+            <button class="btn"><i class="fas fa-share-alt"></i> Refer a Friend</button>
+        </div>
+    </div>
+    <script>
+        // Animate points counter
+        function animateCounter(id, target, duration) {
+            const element = document.getElementById(id);
+            let start = 0;
+            const increment = target / (duration / 16); // ~60fps
+            const timer = setInterval(() => {
+                start += increment;
+                if (start >= target) {
+                    element.textContent = target.toLocaleString() + " pts";
+                    clearInterval(timer);
+                    element.classList.remove('pulse');
+                } else {
+                    element.textContent = Math.floor(start).toLocaleString() + " pts";
+                }
+            }, 16);
+        }
+        // Start the animation when page loads
+        window.addEventListener('load', function() {
+            animateCounter("points-counter", 5420, 2000);
+            // Add interaction to reward items
+            document.querySelectorAll('.reward-item').forEach(item => {
+                item.addEventListener('click', function() {
+                    const rewardName = this.querySelector('.reward-name').textContent;
+                    alert(`You've selected: ${rewardName}\n\nRedirecting to redemption page...`);
+                });
+            });
+        });
+    </script>
+</body>
+</html>

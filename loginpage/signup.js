@@ -8,7 +8,6 @@ document.addEventListener('DOMContentLoaded', function() {
             if (validateForm()) {
                 // Show success message
                 alert('Account created successfully! Redirecting to login page...');
-                
                 // In a real application, you would submit the form data to a server here
                 // For this demo, we'll just redirect to the login page after a short delay
                 setTimeout(function() {

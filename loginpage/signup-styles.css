@@ -1,12 +1,13 @@
-/* Signup Page Specific Styles */
 body {
-    background: #25282a;
+    background: #1a1a1a;
 }
+/* Signup Page Specific Styles */
+
 
 .signup-container {
     display: flex;
     flex-direction: row;
-    align-items: stretch;
+    align-items: center; /* Center align items vertically */
     max-width: 1200px;
     height: 100vh;
     margin: 0 auto;
@@ -53,13 +54,23 @@ body {
 
 .signup-card {
     flex: 1;
-    background-color: white;
-    border-radius: 10px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    background: #222;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(255, 136, 0, 0.25);
     padding: 30px;
     overflow-y: auto;
     max-height: 90vh;
-    animation: slideIn 0.5s ease-out;
+    animation: slideIn 0.5s ease-out, fadeIn 0.8s ease;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    align-self: stretch; /* Ensure card stretches to container height */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.signup-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 32px rgba(255, 136, 0, 0.35);
 }
 
 .form-row {
@@ -81,22 +92,25 @@ label {
     display: block;
     margin-bottom: 5px;
     font-weight: 500;
-    color: #333;
+    color: #e0e0e0;
 }
 
 input, select {
     width: 100%;
     padding: 12px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    font-size: 16px;
-    transition: border-color 0.3s;
+    background: #111;
+    color: #fff;
+    border: 1px solid #333;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border 0.3s ease, background 0.3s ease;
 }
 
 input:focus, select:focus {
-    border-color: #0066cc;
+    border: 1px solid #ff8800;
+    background: #1a1a1a;
     outline: none;
-    box-shadow: 0 0 0 2px rgba(0, 102, 204, 0.2);
+    box-shadow: none;
 }
 
 .terms-checkbox {
@@ -113,35 +127,38 @@ input:focus, select:focus {
 .terms-checkbox label {
     font-size: 14px;
     margin-bottom: 0;
+    color: #a0a0a0;
 }
 
 .signup-btn {
     width: 100%;
     padding: 14px;
-    background-color: #0066cc;
-    color: white;
+    background: #ff8800;
+    color: #fff;
     border: none;
-    border-radius: 5px;
-    font-size: 16px;
+    border-radius: 8px;
+    font-size: 1rem;
     font-weight: 600;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: background 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 2px 8px rgba(255, 136, 0, 0.15);
     margin-top: 10px;
 }
 
 .signup-btn:hover {
-    background-color: #0055aa;
+    background: #ff6600;
+    transform: translateY(-2px);
 }
 
 .login-link {
     text-align: center;
     margin-top: 20px;
     font-size: 14px;
-    color: #666;
+    color: #a0a0a0;
 }
 
 .login-link a {
-    color: #0066cc;
+    color: #3399ff;
     text-decoration: none;
     font-weight: 600;
 }
@@ -161,6 +178,12 @@ input.error-input, select.error-input {
     border-color: #e74c3c;
 }
 
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
 /* Responsive styles */
 @media (min-width: 768px) {
     .signup-image-container {
@@ -169,21 +192,51 @@ input.error-input, select.error-input {
 }
 
 @media (max-width: 767px) {
-    .signup-container {
-        flex-direction: column;
-        padding: 10px;
-    }
-    
-    .signup-card {
-        padding: 20px;
-    }
-    
-    .form-row {
-        flex-direction: column;
-        gap: 0;
-    }
-    
-    .greeting-heading {
-        font-size: 1.5rem;
-    }
+  html, body {
+    height: auto;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+  .signup-container {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 10px;
+    height: auto;
+    gap: 15px;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .signup-image-container,
+  .signup-card {
+    width: 100%;
+    min-width: 0;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 6px 20px rgba(255, 136, 0, 0.15);
+    margin: 0;
+    padding: 16px;
+  }
+  .signup-image-container {
+    display: block;
+    margin-bottom: 10px;
+    min-height: 180px;
+  }
+  .signup-card {
+    padding: 16px;
+  }
+  .form-row {
+    flex-direction: column;
+    gap: 0;
+  }
+  .greeting-heading {
+    font-size: 1.3rem;
+  }
+  input, select {
+    font-size: 1rem;
+    padding: 10px;
+  }
+  .signup-btn {
+    font-size: 1rem;
+    padding: 12px;
+  }
 }
