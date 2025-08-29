@@ -16,6 +16,30 @@ app = FastAPI()
 
 #Pydantic model
 
+class CreateUserRequest(BaseModel):
+    email: EmailStr
+    balance: float = 1000000
+    orange_coins: int = 0
+    phone: str
+
+@app.post("/create-user/")
+def create_user(request: CreateUserRequest):
+    command.execute("SELECT * FROM users WHERE email=?", (request.email,))
+    existing_user = command.fetchone()
+    if existing_user:
+        raise HTTPException(status_code=400, detail="User already exists")
+    
+    command.execute(
+        "INSERT INTO users(email, balance, orange_coins,phone) VALUES (?, ? , ?, ?)",
+        (request.email, request.balance, request.orange_coins, request.phone)
+    )
+
+    connection.commit()
+
+    return {"message": f"User {request.email} created with balance R{request.balance}"}
+
+
+
 class SendMoneyRequest(BaseModel):
 
 
@@ -36,6 +60,8 @@ def transfer_money(request: SendMoneyRequest):
     receiver_account = request.receiver_account
     amount = request.amount
 
+    sender = user.get()
+
     # check if sender has enough money
     sender_balance = sender[1]
     if sender_balance < amount:
@@ -53,7 +79,7 @@ def transfer_money(request: SendMoneyRequest):
 
     #add transaction to log
     command.execute("""
-                   INSERT INTO transactions (sender_email, receiver_account, amount,orange_points) 
+                   INSERT INTO transactions (sender_email, receiver_account, amount,orange_coins) 
                    VALUES (?, ?, ?, ?)
                    """, (sender_email, receiver_account, amount, points_earned))
     
@@ -73,7 +99,6 @@ def transfer_money(request: SendMoneyRequest):
 @app.get("/test")
 def test():
     return {"message": "FastAPI is working!"}
-
 
     # check if sender has enough money 
     # deduct amount
@@ -100,7 +125,7 @@ CREATE TABLE IF NOT EXISTS transactions (
     sender_email TEXT,
     receiver_account TEXT,
     amount REAL,
-    orange_points INTEGER,
+    orange_coins INTEGER,
     timestamp DATETIME DEFAULT CURRENT_TIMESTAMP
 )
 """)
