@@ -29,9 +29,12 @@ document.getElementById('loginForm').addEventListener('submit', function(e) {
     e.preventDefault();
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
-    
     if (email && password) {
-        showAlert('Login functionality would be implemented here. This is a demo page.');
+        // In a real app, validate credentials here
+        alert('Login successful! Redirecting to Send Money page...');
+        setTimeout(function() {
+            window.location.href = '../send&Earn/send.html';
+        }, 1500);
     }
 });
 
