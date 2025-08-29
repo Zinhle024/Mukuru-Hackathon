@@ -4,20 +4,40 @@
     <meta charset="UTF-8">
     <title>Send Money - Mukuru</title>
     <link rel="stylesheet" href="send.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="send.js" defer></script>
 </head>
 <body>
-   <!-- Celebration Modal -->
-    <div class="celebration" id="celebration">
-        <div class="celebration-content">
-            <h2>Congratulations! 🎉</h2>
-            <div class="drum-icon">🥁</div>
-            <p>You've reached the <span id="achievedTier">Silver</span> Tier!</p>
-            <p>African drums are playing in your honor!</p>
-            <button class="celebration-btn" id="stopSound">Stop Sound</button>
+  <!-- Celebration Modal -->
+  <div class="celebration" id="celebration">
+    <div class="celebration-content">
+        <h2>Congratulations! 🎉</h2>
+        <div class="drum-icon">🥁</div>
+        <p>You've reached the <span id="achievedTier">Silver</span> Tier!</p>
+        <p>African drums are playing in your honor!</p>
+        <button class="celebration-btn" id="stopSound">Stop Sound</button>
+    </div>
+</div>
+
+<div class="main-container">
+    <!-- Send Money Container -->
+    <div class="content-container send-container">
+        <div class="header">
+            <img src="https://tse1.mm.bing.net/th/id/OIP.NnBH8Q4x4D-kmvTFrb1UmAAAAA?rs=1&pid=ImgDetMain&o=7&rm=3" alt="Mukuru Logo" class="logo">
         </div>
+        <h1><i class="fas fa-paper-plane"></i> Send Money</h1>
+        <form id="sendMoneyForm">
+            <input type="text" placeholder="Recipient Name (e.g. DimaKatso Sakes)" required>
+            <input type="tel" placeholder="Phone Number (e.g. 0712345678)" required pattern="[0-9]{10,15}">
+            <input type="number" placeholder="Amount (e.g. R 500)" required>
+            <div class="button-row">
+                <button type="submit"><i class="fas fa-paper-plane"></i> Send</button>
+                <button type="button" class="manage-btn" id="manageBtn">Manage</button>
+            </div>
+        </form>
     </div>
 
+<<<<<<< HEAD
     <div class="main-container">
         <!-- Send Money Container -->
         <div class="content-container send-container">
@@ -33,77 +53,75 @@
                     <button type="submit"><i class="fas fa-paper-plane"></i> Send</button>
                     <button type="button" class="manage-btn" onclick="window.location.href='../managepage/manage.html'">Manage</button>
                     <button type="button" class="marketplace-btn" onclick="window.location.href='../marketplace/marketplace.html'"><i class="fas fa-shopping-cart"></i> Marketplace</button>
-                </div>
-            </form>
-        </div>
+=======
+    <!-- Points & History Container -->
+    <div class="content-container points-container">
+        <h3><i class="fas fa-coins"></i> Your Points Balance</h3>
+        <p id="balance">0 <span class="star-icon">⭐</span></p>
+        <div id="pointsPopup" class="popup">+0 ⭐</div>
+        <h4><i class="fas fa-history"></i> Transaction History</h4>
+        <ul id="transactionHistory" class="timeline">
+            <li id="noTransactions">No transactions yet</li>
+        </ul>
+    </div>
 
-        <!-- Points & History Container -->
-        <div class="content-container points-container">
-            <h3><i class="fas fa-coins"></i> Your Points Balance</h3>
-            <p id="balance">0 <span class="star-icon">⭐</span></p>
-            <div id="pointsPopup" class="popup">+0 ⭐</div>
-            <h4><i class="fas fa-history"></i> Transaction History</h4>
-            <ul id="transactionHistory" class="timeline">
-                <li id="noTransactions">No transactions yet</li>
-            </ul>
-        </div>
-
-        <!-- Tiers & Badges Container -->
-        <div class="content-container tiers-badges-container">
-            <!-- Tiers Section -->
-            <div class="tiers-section">
-                <h3><i class="fas fa-trophy"></i> Reward Tiers</h3>
-                <div class="tier-display">
-                    <div class="tier-icon" id="currentTierIcon">🥉</div>
-                    <div>
-                        <p id="currentTierText">Current Tier: Bronze</p>
-                        <p id="tierBenefits">Benefits: 1x Points, Basic Rewards</p>
-                    </div>
+    <!-- Tiers & Badges Container -->
+    <div class="content-container tiers-badges-container">
+        <!-- Tiers Section -->
+        <div class="tiers-section">
+            <h3><i class="fas fa-trophy"></i> Reward Tiers</h3>
+            <div class="tier-display">
+                <div class="tier-icon" id="currentTierIcon">🥉</div>
+                <div>
+                    <p id="currentTierText">Current Tier: Bronze</p>
+                    <p id="tierBenefits">Benefits: 1x Points, Basic Rewards</p>
+>>>>>>> e145381fc95d06f4423bfe50ce5f8b0a5e7c13cb
                 </div>
-                <div class="tier-progress">
-                    <div class="tier-bar" id="tierBar"></div>
-                </div>
-                <p id="tierProgress">100/100 points to reach Silver</p>
             </div>
+            <div class="tier-progress">
+                <div class="tier-bar" id="tierBar"></div>
+            </div>
+            <p id="tierProgress">100/100 points to reach Silver</p>
+        </div>
 
-            <!-- Badges Section -->
-            <div class="badges-section">
-                <h3><i class="fas fa-medal"></i> Achievement Badges</h3>
-                <div class="badges-container">
-                    <div class="badge">
-                        <i class="fas fa-medal"></i>
-                        <div class="badge-name">First Transfer</div>
-                    </div>
-                    <div class="badge locked">
-                        <i class="fas fa-lock"></i>
-                        <div class="badge-name">Frequent Sender</div>
-                    </div>
-                    <div class="badge locked">
-                        <i class="fas fa-lock"></i>
-                        <div class="badge-name">Big Spender</div>
-                    </div>
-                    <div class="badge locked">
-                        <i class="fas fa-lock"></i>
-                        <div class="badge-name">Referral Master</div>
-                    </div>
-                    <div class="badge locked">
-                        <i class="fas fa-lock"></i>
-                        <div class="badge-name">Quick Sender</div>
-                    </div>
-                    <div class="badge locked">
-                        <i class="fas fa-lock"></i>
-                        <div class="badge-name">Global Citizen</div>
-                    </div>
+        <!-- Badges Section -->
+        <div class="badges-section">
+            <h3><i class="fas fa-medal"></i> Achievement Badges</h3>
+            <div class="badges-container">
+                <div class="badge">
+                    <i class="fas fa-medal"></i>
+                    <div class="badge-name">First Transfer</div>
+                </div>
+                <div class="badge locked">
+                    <i class="fas fa-lock"></i>
+                    <div class="badge-name">Frequent Sender</div>
+                </div>
+                <div class="badge locked">
+                    <i class="fas fa-lock"></i>
+                    <div class="badge-name">Big Spender</div>
+                </div>
+                <div class="badge locked">
+                    <i class="fas fa-lock"></i>
+                    <div class="badge-name">Referral Master</div>
+                </div>
+                <div class="badge locked">
+                    <i class="fas fa-lock"></i>
+                    <div class="badge-name">Quick Sender</div>
+                </div>
+                <div class="badge locked">
+                    <i class="fas fa-lock"></i>
+                    <div class="badge-name">Global Citizen</div>
                 </div>
             </div>
         </div>
     </div>
+</div>
 
-    <!-- Audio element for the drum sound -->
-    <audio id="drumSound" loop>
-        <!-- This is a base64 encoded short African drum rhythm -->
-        <source src="data:audio/mpeg;base64,SUQzBAAAAAABEVRYWFgAAAAtAAADY29tbWVudABCaWdTb3VuZEJhbmsuY29tIC8gTGFTb25vdGhlcXVlLm9yZwBURU5DAAAAHQAAA1N3aXRjaCBQbHVzIMKpIE5DSCBTb2Z0d2FyZQBUSVQyAAAABgAAAzIyMzUAVFNTRQAAAA8AAANMYXZmNTcuODMuMTAwAAAAAAAAAAAAAAD/80DEAAAAA0gAAAAATEFNRTMuMTAwVVVVVVVVVVVVVUxBTUUzLjEwMFVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVf/zQsRbAAADSAAAAABVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVf/zQMSkAAADSAAAAABVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV" type="audio/mpeg">
-    </audio>
+<!-- Audio element for the drum sound -->
+<audio id="drumSound" loop>
+    <!-- This is a base64 encoded short African drum rhythm -->
+    <source src="data:audio/mpeg;base64,SUQzBAAAAAABEVRYWFgAAAAtAAADY29tbWVudABCaWdTb3VuZEJhbmsuY29tIC8gTGFTb25vdGhlcXVlLm9yZwBURU5DAAAAHQAAA1N3aXRjaCBQbHVzIMKpIE5DSCBTb2Z0d2FyZQBUSVQyAAAABgAAAzIyMzUAVFNTRQAAAA8AAANMYXZmNTcuODMuMTAwAAAAAAAAAAAAAAD/80DEAAAAA0gAAAAATEFNRTMuMTAwVVVVVVVVVVVVVUxBTUUzLjEwMFVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVf/zQsRbAAADSAAAAABVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVf/zQMSkAAADSAAAAABVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV" type="audio/mpeg">
+</audio>
 </body>
 </html>
 

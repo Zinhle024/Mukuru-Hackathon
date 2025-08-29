@@ -6,60 +6,7 @@
     <title>My Rewards - Mukuru</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="manage.css">
-    <style>
-        :root {
-            --mukuru-charcoal: #0d0d0d;
-            --mukuru-dark: #1a1a1a;
-            --mukuru-card: #222;
-            --mukuru-orange: #FF6600;
-            --mukuru-orange-light: rgba(255, 102, 0, 0.15);
-            --mukuru-white: #fff;
-            --mukuru-light-text: #e0e0e0;
-            --mukuru-medium-text: #a0a0a0;
-            --mukuru-green: #4cd964;
-            --mukuru-purple: #8A2BE2;
-        }
-        @media (max-width: 900px) {
-            .dashboard {
-                grid-template-columns: 1fr;
-            }
-        }
-        @media (max-width: 768px) {
-            header {
-                flex-direction: column;
-                gap: 1rem;
-            }
-            nav {
-                justify-content: center;
-            }
-            .points-display {
-                font-size: 2.5rem;
-                padding: 1rem;
-            }
-            .rewards-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-        @media (max-width: 480px) {
-            nav a {
-                padding: 0.4rem 0.8rem;
-                font-size: 0.9rem;
-            }
-            .points-display {
-                font-size: 2rem;
-            }
-            .card {
-                padding: 1rem;
-            }
-            .btn {
-                width: 100%;
-                justify-content: center;
-            }
-            .rewards-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+    
 </head>
 <body>
     <div class="container">
@@ -70,9 +17,8 @@
             </div>
             <nav>
                 <a href="../send&Earn/send.html"><i class="fas fa-paper-plane"></i> Send & Earn</a>
-                <a href="../loginpage/signup.html"><i class="fas fa-user-plus"></i> Sign Up</a>
+                <a href="signup.html"><i class="fas fa-user-plus"></i> Sign Up</a>
                 <a href="index.html"><i class="fas fa-home"></i> Home</a>
-                <a href="../marketplace/marketplace.html"><i class="fas fa-shopping-cart"></i> Marketplace</a>
             </nav>
         </header>
         <div class="dashboard">
@@ -94,6 +40,88 @@
                     </div>
                 </div>
             </div>
+            
+            <!-- New Points Balance & Transaction History Card -->
+            <div class="card points-history-card">
+                <h2 class="card-title"><i class="fas fa-wallet"></i> Points Balance & History</h2>
+                
+                <div class="balance-summary">
+                    <div class="balance-label">Available Points Balance</div>
+                    <div class="balance-amount" id="balance-amount">5,420</div>
+                </div>
+                
+                <div class="transaction-filters">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="earned">Earned</button>
+                    <button class="filter-btn" data-filter="spent">Spent</button>
+                    <button class="filter-btn" data-filter="transfers">Transfers</button>
+                </div>
+                
+                <div class="transaction-list">
+                    <div class="transaction-item" data-type="earned">
+                        <div class="transaction-details">
+                            <div class="transaction-name">Coffee Shop Purchase</div>
+                            <div class="transaction-date">28 Aug 2025 • 10:24 AM</div>
+                        </div>
+                        <div class="transaction-amount positive">
+                            <i class="fas fa-plus-circle transaction-icon"></i>+120
+                        </div>
+                    </div>
+                    
+                    <div class="transaction-item" data-type="spent">
+                        <div class="transaction-details">
+                            <div class="transaction-name">Gift Voucher Redemption</div>
+                            <div class="transaction-date">25 Aug 2025 • 02:15 PM</div>
+                        </div>
+                        <div class="transaction-amount negative">
+                            <i class="fas fa-minus-circle transaction-icon"></i>-300
+                        </div>
+                    </div>
+                    
+                    <div class="transaction-item" data-type="earned">
+                        <div class="transaction-details">
+                            <div class="transaction-name">Grocery Store Purchase</div>
+                            <div class="transaction-date">22 Aug 2025 • 09:45 AM</div>
+                        </div>
+                        <div class="transaction-amount positive">
+                            <i class="fas fa-plus-circle transaction-icon"></i>+200
+                        </div>
+                    </div>
+                    
+                    <div class="transaction-item" data-type="earned">
+                        <div class="transaction-details">
+                            <div class="transaction-name">Referral Bonus</div>
+                            <div class="transaction-date">18 Aug 2025 • 11:30 AM</div>
+                        </div>
+                        <div class="transaction-amount positive">
+                            <i class="fas fa-plus-circle transaction-icon"></i>+500
+                        </div>
+                    </div>
+                    
+                    <div class="transaction-item" data-type="transfers">
+                        <div class="transaction-details">
+                            <div class="transaction-name">Points Transfer to Friend</div>
+                            <div class="transaction-date">15 Aug 2025 • 04:20 PM</div>
+                        </div>
+                        <div class="transaction-amount negative">
+                            <i class="fas fa-exchange-alt transaction-icon"></i>-250
+                        </div>
+                    </div>
+                    
+                    <div class="transaction-item" data-type="earned">
+                        <div class="transaction-details">
+                            <div class="transaction-name">Restaurant Dining</div>
+                            <div class="transaction-date">12 Aug 2025 • 07:45 PM</div>
+                        </div>
+                        <div class="transaction-amount positive">
+                            <i class="fas fa-plus-circle transaction-icon"></i>+180
+                        </div>
+                    </div>
+                </div>
+                
+                <a href="#" class="view-all">View Full Transaction History <i class="fas fa-arrow-right"></i></a>
+            </div>
+            
             <div class="card">
                 <h2 class="card-title"><i class="fas fa-history"></i> Recent Activity</h2>
                 <div class="history-list">
@@ -126,7 +154,7 @@
                         <div class="history-points positive">+500</div>
                     </div>
                 </div>
-                <a href="#" class="view-all">View Full History <i class="fas fa-arrow-right"></i></a>
+                
             </div>
             <div class="card">
                 <h2 class="card-title"><i class="fas fa-gift"></i> Rewards Marketplace</h2>
@@ -151,6 +179,44 @@
                         <div class="reward-name">Gift Voucher</div>
                         <div class="reward-cost">2,000 pts</div>
                     </div>
+                                     <!-- New Reward: Greyhound Bus Discount -->
+
+
+
+    <div class="reward-item">
+
+
+        <div class="reward-icon"><i class="fas fa-bus"></i></div>
+
+
+        <div class="reward-name">Greyhound Bus Ticket Discount</div>
+
+
+        <div class="reward-cost">1,500 pts</div>
+
+
+    </div>
+
+
+    <!-- New Reward: Flight Discount -->
+
+
+    <div class="reward-item">
+
+
+        <div class="reward-icon"><i class="fas fa-plane"></i></div>
+
+
+        <div class="reward-name">Flight Ticket Discount</div>
+
+
+        <div class="reward-cost">3,500 pts</div>
+
+
+    </div>
+
+
+                    
                 </div>
                 <a href="../marketplace/marketplace.html" class="view-all">Browse All Rewards <i class="fas fa-arrow-right"></i></a>
             </div>
@@ -287,105 +353,18 @@
                 }
             }, 16);
         }
-        
-        // Calendar and sticker functionality
-        function initCalendar() {
-            const totalPoints = 5420;
-            const pointsPerSticker = 5;
-            
-            // Calculate available stickers and remaining points
-            const availableStickers = Math.floor(totalPoints / pointsPerSticker);
-            const remainingPoints = totalPoints % pointsPerSticker;
-            
-            // Update sticker info
-            document.getElementById('available-stickers').textContent = availableStickers;
-            document.getElementById('current-points-to-sticker').textContent = remainingPoints;
-            
-            // Update progress bar
-            const progressFill = document.getElementById('sticker-progress-fill');
-            progressFill.style.width = (remainingPoints / pointsPerSticker * 100) + '%';
-            
-            // Get all calendar days
-            const calendarDays = document.querySelectorAll('.calendar-day');
-            let placedStickers = 0;
-            
-            // Add click event to calendar days
-            calendarDays.forEach(day => {
-                day.addEventListener('click', function() {
-                    // Check if we have stickers available and this day doesn't have a sticker yet
-                    if (availableStickers > placedStickers && !this.classList.contains('has-sticker')) {
-                        this.classList.add('has-sticker');
-                        placedStickers++;
-                        
-                        // Update available stickers count
-                        document.getElementById('available-stickers').textContent = availableStickers - placedStickers;
-                        
-                        // Check if a row is completed
-                        checkForCompletedRows();
-                    } else if (this.classList.contains('has-sticker')) {
-                        // Remove sticker if already placed
-                        this.classList.remove('has-sticker');
-                        placedStickers--;
-                        
-                        // Update available stickers count
-                        document.getElementById('available-stickers').textContent = availableStickers - placedStickers;
-                    } else {
-                        // No stickers available
-                        alert('You need to earn more points to get more stickers! Every 5 points = 1 sticker.');
-                    }
-                });
-            });
-            
-            // Function to check if any rows are completed
-            function checkForCompletedRows() {
-                // Get all days in a 7-column grid
-                const rows = [
-                    Array.from(calendarDays).slice(0, 7),   // Week 1
-                    Array.from(calendarDays).slice(7, 14),  // Week 2
-                    Array.from(calendarDays).slice(14, 21), // Week 3
-                    Array.from(calendarDays).slice(21, 28)  // Week 4
-                ];
-                
-                // Check each row
-                rows.forEach((row, index) => {
-                    const allHaveStickers = row.every(day => day.classList.contains('has-sticker'));
-                    
-                    if (allHaveStickers) {
-                        // Row completed!
-                        setTimeout(() => {
-                            alert(`Congratulations! You've completed Week ${index + 1} and earned a surprise reward!\n\nYour reward: 500 bonus points added to your account!`);
-                            
-                            // Add animation to the completed row
-                            row.forEach(day => {
-                                day.style.animation = 'pulse 1s infinite';
-                                setTimeout(() => {
-                                    day.style.animation = '';
-                                }, 3000);
-                            });
-                        }, 500);
-                    }
-                });
-                
-                // Check if all days have stickers
-                const allDaysHaveStickers = Array.from(calendarDays).every(day => day.classList.contains('has-sticker'));
-                
-                if (allDaysHaveStickers) {
-                    setTimeout(() => {
-                        alert('Amazing! You\'ve filled the entire calendar!\n\nYou\'ve earned a PREMIUM REWARD: 2000 bonus points and a special badge for your profile!');
-                    }, 1000);
-                }
-            }
-        }
-        
         // Start the animation when page loads
         window.addEventListener('load', function() {
             animateCounter("points-counter", 5420, 2000);
-            
             // Add interaction to reward items
             document.querySelectorAll('.reward-item').forEach(item => {
                 item.addEventListener('click', function() {
                     const rewardName = this.querySelector('.reward-name').textContent;
-                    alert(`You've selected: ${rewardName}\n\nRedirecting to redemption page...`);
+                    if (rewardName === 'Digital Stickers') {
+                        window.location.href = '../rewardsCalendar/index.html';
+                    } else {
+                        alert(`You've selected: ${rewardName}\n\nRedirecting to redemption page...`);
+                    }
                 });
             });
             
