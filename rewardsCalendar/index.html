@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Points Reward System</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Extra Points and Rewards</h1>
+            <p class="subtitle">Earn points, get rewards, and collect stickers for your milestones!</p>
+        </header>
+        
+        <div id="status-message" class="status-message"></div>
+        
+        <div class="dashboard">
+            <div class="student-info">
+                <div class="info-header">
+                    <div class="avatar">
+                        <i class="fas fa-user-graduate"></i>
+                    </div>
+                    <div class="student-details">
+                        <h2 id="student-name">Sarah Johnson</h2>
+                        <p>user_name</p>
+                    </div>
+                </div>
+                
+                <div class="points-display">
+                    <span id="total-points">0</span> points
+                </div>
+                
+                <div class="reward-progress">
+                    <div class="progress-bar" id="progress-bar"></div>
+                </div>
+                <p style="text-align: center; color: #666;">Progress to next reward</p>
+            </div>
+            
+            <div class="rewards">
+                <h2 style="color: #d95118; margin-bottom: 20px;">Rewards Earned</h2>
+                
+                <div class="reward-cards">
+                    <div class="reward-card">
+                        <div class="reward-icon">
+                            <i class="fas fa-cookie"></i>
+                        </div>
+                        <div class="reward-title">Headphones</div>
+                        <div class="reward-desc">5+ points</div>
+                        <div id="chocolate-reward" class="reward-status">Not earned</div>
+                    </div>
+                    
+                    <div class="reward-card">
+                        <div class="reward-icon">
+                            <i class="fas fa-money-bill-wave"></i>
+                        </div>
+                        <div class="reward-title"> 30% off your next flight</div>
+                        <div class="reward-desc">15+ points</div>
+                        <div id="cash-reward" class="reward-status">Not earned</div>
+                    </div>
+                    
+                    <div class="reward-card">
+                        <div class="reward-icon">
+                            <i class="fas fa-gift"></i>
+                        </div>
+                        <div class="reward-title">surprize</div>
+                        <div class="reward-desc">30+ points</div>
+                        <div id="gift-reward" class="reward-status">Not earned</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="grid-system">
+            <h2 class="grid-title">Points & Stickers Collection</h2>
+            <div class="points-grid" id="points-grid">
+            </div>
+        </div>
+        
+        <div class="controls">
+            <h2 style="color: #756f6f; margin-bottom: 20px;">Add Points</h2>
+            
+            <div class="subject-buttons">
+                <button class="subject-btn" id="english-btn">
+                    <i class="fas fa-book"></i> R 1000+ (+5)
+                </button>
+                <button class="subject-btn" id="math-btn">
+                    <i class="fas fa-calculator"></i> R5000 (+15)
+                </button>
+                <button class="subject-btn" id="pt-btn">
+                    <i class="fas fa-running"></i> R 500+ (+2)
+                </button>
+            </div>
+            
+            <button class="reset-btn" id="reset-btn">
+                <i class="fas fa-redo"></i> Reset Points
+            </button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
