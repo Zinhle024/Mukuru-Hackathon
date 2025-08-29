@@ -389,6 +389,149 @@
             animation: pulse 2s infinite;
         }
         
+        /* Rewards Chase Calendar Styles */
+        .calendar-description {
+            text-align: center;
+            color: var(--mukuru-medium-text);
+            margin-bottom: 1.5rem;
+        }
+        
+        .rewards-calendar {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 8px;
+            margin-bottom: 1rem;
+        }
+        
+        .calendar-day {
+            aspect-ratio: 1;
+            background: var(--mukuru-card);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Removed color variety classes */
+        /* .calendar-day.color1, .calendar-day.color2, etc. */
+        }
+
+        /* Add color variety to calendar days */
+        .calendar-day.color1 { background: var(--mukuru-orange); color: var(--mukuru-white); }
+        .calendar-day.color2 { background: var(--mukuru-green); color: var(--mukuru-charcoal); }
+        .calendar-day.color3 { background: var(--mukuru-purple); color: var(--mukuru-white); }
+        .calendar-day.color4 { background: var(--mukuru-white); color: var(--mukuru-charcoal); }
+        .calendar-day.color5 { background: var(--mukuru-grey); color: var(--mukuru-white); }
+        .calendar-day.color6 { background: var(--mukuru-orange-light); color: var(--mukuru-charcoal); }
+        .calendar-day.color7 { background: var(--mukuru-dark); color: var(--mukuru-white); }
+        }
+        
+        .calendar-day:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            border-color: var(--mukuru-orange);
+        }
+        
+        .calendar-day.weekend {
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--mukuru-medium-text);
+        }
+        
+        .calendar-day.has-sticker {
+            background: var(--mukuru-orange-light);
+            border-color: var(--mukuru-orange);
+        }
+        
+        .calendar-day.has-sticker::after {
+            content: '🌟';
+            position: absolute;
+            font-size: 1.5rem;
+            z-index: 2;
+        }
+        
+        .calendar-info {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+        
+        .stickers-info {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 1.5rem;
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .sticker-count {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--mukuru-orange);
+        }
+        
+        .sticker-progress .progress-bar {
+            height: 8px;
+            margin-bottom: 0.5rem;
+        }
+        
+        .progress-text {
+            font-size: 0.9rem;
+            color: var(--mukuru-medium-text);
+        }
+        
+        .rewards-info {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 1.5rem;
+            border-radius: 12px;
+        }
+        
+        .rewards-info h3 {
+            color: var(--mukuru-orange);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+        
+        .reward-tier {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .tier-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--mukuru-orange-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--mukuru-orange);
+            font-size: 1.2rem;
+        }
+        
+        .tier-name {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+        
+        .tier-desc {
+            font-size: 0.85rem;
+            color: var(--mukuru-medium-text);
+        }
+        
         /* Responsive adjustments */
         @media (max-width: 768px) {
             header {
@@ -407,6 +550,10 @@
             
             .rewards-grid {
                 grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .calendar-info {
+                grid-template-columns: 1fr;
             }
         }
         
@@ -431,5 +578,13 @@
             
             .rewards-grid {
                 grid-template-columns: 1fr;
+            }
+            
+            .calendar-day {
+                font-size: 0.8rem;
+            }
+            
+            .calendar-day.has-sticker::after {
+                font-size: 1.2rem;
             }
         }

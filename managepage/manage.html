@@ -70,8 +70,9 @@
             </div>
             <nav>
                 <a href="../send&Earn/send.html"><i class="fas fa-paper-plane"></i> Send & Earn</a>
-                <a href="signup.html"><i class="fas fa-user-plus"></i> Sign Up</a>
+                <a href="../loginpage/signup.html"><i class="fas fa-user-plus"></i> Sign Up</a>
                 <a href="index.html"><i class="fas fa-home"></i> Home</a>
+                <a href="../marketplace/marketplace.html"><i class="fas fa-shopping-cart"></i> Marketplace</a>
             </nav>
         </header>
         <div class="dashboard">
@@ -151,7 +152,7 @@
                         <div class="reward-cost">2,000 pts</div>
                     </div>
                 </div>
-                <a href="#" class="view-all">Browse All Rewards <i class="fas fa-arrow-right"></i></a>
+                <a href="../marketplace/marketplace.html" class="view-all">Browse All Rewards <i class="fas fa-arrow-right"></i></a>
             </div>
             <div class="card">
                 <h2 class="card-title"><i class="fas fa-trophy"></i> Achievements</h2>
@@ -184,9 +185,88 @@
                 <a href="#" class="view-all">View All Achievements <i class="fas fa-arrow-right"></i></a>
             </div>
         </div>
+        <div class="card">
+            <h2 class="card-title"><i class="fas fa-calendar-alt"></i> Rewards Chase Calendar</h2>
+            <p class="calendar-description">Collect stickers by earning points! Every 5 points = 1 sticker. Complete a row to unlock surprise benefits!</p>
+            
+            <div class="rewards-calendar">
+                <div class="calendar-grid">
+                    <!-- Week 1 -->
+                    <div class="calendar-day">1</div>
+                    <div class="calendar-day">2</div>
+                    <div class="calendar-day">3</div>
+                    <div class="calendar-day">4</div>
+                    <div class="calendar-day">5</div>
+                    <div class="calendar-day weekend">6</div>
+                    <div class="calendar-day weekend">7</div>
+                    
+                    <!-- Week 2 -->
+                    <div class="calendar-day">8</div>
+                    <div class="calendar-day">9</div>
+                    <div class="calendar-day">10</div>
+                    <div class="calendar-day">11</div>
+                    <div class="calendar-day">12</div>
+                    <div class="calendar-day weekend">13</div>
+                    <div class="calendar-day weekend">14</div>
+                    
+                    <!-- Week 3 -->
+                    <div class="calendar-day">15</div>
+                    <div class="calendar-day">16</div>
+                    <div class="calendar-day">17</div>
+                    <div class="calendar-day">18</div>
+                    <div class="calendar-day">19</div>
+                    <div class="calendar-day weekend">20</div>
+                    <div class="calendar-day weekend">21</div>
+                    
+                    <!-- Week 4 -->
+                    <div class="calendar-day">22</div>
+                    <div class="calendar-day">23</div>
+                    <div class="calendar-day">24</div>
+                    <div class="calendar-day">25</div>
+                    <div class="calendar-day">26</div>
+                    <div class="calendar-day weekend">27</div>
+                    <div class="calendar-day weekend">28</div>
+                </div>
+                
+                <div class="calendar-info">
+                    <div class="stickers-info">
+                        <div class="sticker-count">
+                            <span id="available-stickers">0</span> stickers available
+                        </div>
+                        <div class="sticker-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="sticker-progress-fill"></div>
+                            </div>
+                            <div class="progress-text">
+                                <span id="current-points-to-sticker">0</span>/5 points to next sticker
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="rewards-info">
+                        <h3>Rewards Tiers</h3>
+                        <div class="reward-tier">
+                            <div class="tier-icon"><i class="fas fa-gift"></i></div>
+                            <div class="tier-details">
+                                <div class="tier-name">Row Completion</div>
+                                <div class="tier-desc">Complete a row to earn a surprise reward!</div>
+                            </div>
+                        </div>
+                        <div class="reward-tier">
+                            <div class="tier-icon"><i class="fas fa-star"></i></div>
+                            <div class="tier-details">
+                                <div class="tier-name">Full Calendar</div>
+                                <div class="tier-desc">Fill the entire calendar for a premium reward!</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
         <div class="actions">
             <button class="btn"><i class="fas fa-file-alt"></i> View Full Statement</button>
-            <button class="btn btn-outline"><i class="fas fa-store"></i> Rewards Marketplace</button>
+            <button class="btn btn-outline" onclick="window.location.href='../marketplace/marketplace.html'"><i class="fas fa-store"></i> Rewards Marketplace</button>
             <button class="btn"><i class="fas fa-share-alt"></i> Refer a Friend</button>
         </div>
     </div>
@@ -207,9 +287,100 @@
                 }
             }, 16);
         }
+        
+        // Calendar and sticker functionality
+        function initCalendar() {
+            const totalPoints = 5420;
+            const pointsPerSticker = 5;
+            
+            // Calculate available stickers and remaining points
+            const availableStickers = Math.floor(totalPoints / pointsPerSticker);
+            const remainingPoints = totalPoints % pointsPerSticker;
+            
+            // Update sticker info
+            document.getElementById('available-stickers').textContent = availableStickers;
+            document.getElementById('current-points-to-sticker').textContent = remainingPoints;
+            
+            // Update progress bar
+            const progressFill = document.getElementById('sticker-progress-fill');
+            progressFill.style.width = (remainingPoints / pointsPerSticker * 100) + '%';
+            
+            // Get all calendar days
+            const calendarDays = document.querySelectorAll('.calendar-day');
+            let placedStickers = 0;
+            
+            // Add click event to calendar days
+            calendarDays.forEach(day => {
+                day.addEventListener('click', function() {
+                    // Check if we have stickers available and this day doesn't have a sticker yet
+                    if (availableStickers > placedStickers && !this.classList.contains('has-sticker')) {
+                        this.classList.add('has-sticker');
+                        placedStickers++;
+                        
+                        // Update available stickers count
+                        document.getElementById('available-stickers').textContent = availableStickers - placedStickers;
+                        
+                        // Check if a row is completed
+                        checkForCompletedRows();
+                    } else if (this.classList.contains('has-sticker')) {
+                        // Remove sticker if already placed
+                        this.classList.remove('has-sticker');
+                        placedStickers--;
+                        
+                        // Update available stickers count
+                        document.getElementById('available-stickers').textContent = availableStickers - placedStickers;
+                    } else {
+                        // No stickers available
+                        alert('You need to earn more points to get more stickers! Every 5 points = 1 sticker.');
+                    }
+                });
+            });
+            
+            // Function to check if any rows are completed
+            function checkForCompletedRows() {
+                // Get all days in a 7-column grid
+                const rows = [
+                    Array.from(calendarDays).slice(0, 7),   // Week 1
+                    Array.from(calendarDays).slice(7, 14),  // Week 2
+                    Array.from(calendarDays).slice(14, 21), // Week 3
+                    Array.from(calendarDays).slice(21, 28)  // Week 4
+                ];
+                
+                // Check each row
+                rows.forEach((row, index) => {
+                    const allHaveStickers = row.every(day => day.classList.contains('has-sticker'));
+                    
+                    if (allHaveStickers) {
+                        // Row completed!
+                        setTimeout(() => {
+                            alert(`Congratulations! You've completed Week ${index + 1} and earned a surprise reward!\n\nYour reward: 500 bonus points added to your account!`);
+                            
+                            // Add animation to the completed row
+                            row.forEach(day => {
+                                day.style.animation = 'pulse 1s infinite';
+                                setTimeout(() => {
+                                    day.style.animation = '';
+                                }, 3000);
+                            });
+                        }, 500);
+                    }
+                });
+                
+                // Check if all days have stickers
+                const allDaysHaveStickers = Array.from(calendarDays).every(day => day.classList.contains('has-sticker'));
+                
+                if (allDaysHaveStickers) {
+                    setTimeout(() => {
+                        alert('Amazing! You\'ve filled the entire calendar!\n\nYou\'ve earned a PREMIUM REWARD: 2000 bonus points and a special badge for your profile!');
+                    }, 1000);
+                }
+            }
+        }
+        
         // Start the animation when page loads
         window.addEventListener('load', function() {
             animateCounter("points-counter", 5420, 2000);
+            
             // Add interaction to reward items
             document.querySelectorAll('.reward-item').forEach(item => {
                 item.addEventListener('click', function() {
@@ -217,6 +388,9 @@
                     alert(`You've selected: ${rewardName}\n\nRedirecting to redemption page...`);
                 });
             });
+            
+            // Initialize calendar functionality
+            initCalendar();
         });
     </script>
 </body>

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rewards Marketplace - Mukuru</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="marketplace.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <i class="fas fa-fire"></i>
+                <span>Mukuru Rewards</span>
+            </div>
+            <nav>
+                <a href="../send&Earn/send.html"><i class="fas fa-paper-plane"></i> Send & Earn</a>
+                <a href="../managepage/manage.html"><i class="fas fa-trophy"></i> My Rewards</a>
+                <a href="../loginpage/index.html"><i class="fas fa-home"></i> Home</a>
+            </nav>
+        </header>
+
+        <div class="marketplace-header">
+            <h1>Rewards Marketplace</h1>
+            <p>Redeem your hard-earned points for exciting rewards from our partners</p>
+            <div class="points-display pulse" id="points-counter">0 pts</div>
+        </div>
+
+        <div class="category-nav">
+            <button class="category-btn active" data-category="all">All Rewards</button>
+            <button class="category-btn" data-category="food">Food & Dining</button>
+            <button class="category-btn" data-category="shopping">Shopping</button>
+            <button class="category-btn" data-category="entertainment">Entertainment</button>
+            <button class="category-btn" data-category="travel">Travel</button>
+        </div>
+
+        <div class="rewards-container">
+            <!-- Food & Dining Category -->
+            <div class="reward-card" data-category="food" data-reward-id="kfc-meal">
+                <div class="reward-logo">
+                    <img src="logos/kfc.svg" alt="KFC Logo">
+                </div>
+                <div class="reward-details">
+                    <h3>KFC Meal Voucher</h3>
+                    <p>Enjoy a delicious meal at any KFC restaurant</p>
+                    <div class="reward-meta">
+                        <span class="reward-points">1,500 pts</span>
+                        <button class="redeem-btn">Redeem</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="reward-card" data-category="food" data-reward-id="mcdonalds-combo">
+                <div class="reward-logo">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/3/36/McDonald%27s_Golden_Arches.svg" alt="McDonald's Logo">
+                </div>
+                <div class="reward-details">
+                    <h3>McDonald's Combo Meal</h3>
+                    <p>Redeem for a combo meal at McDonald's</p>
+                    <div class="reward-meta">
+                        <span class="reward-points">1,200 pts</span>
+                        <button class="redeem-btn">Redeem</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Shopping Category -->
+            <div class="reward-card" data-category="shopping" data-reward-id="picknpay-voucher">
+                <div class="reward-logo">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/f/f8/Pick_n_Pay_logo.svg" alt="Pick n Pay Logo">
+                </div>
+                <div class="reward-details">
+                    <h3>Pick n Pay Voucher</h3>
+                    <p>R100 shopping voucher for Pick n Pay stores</p>
+                    <div class="reward-meta">
+                        <span class="reward-points">2,000 pts</span>
+                        <button class="redeem-btn">Redeem</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="reward-card" data-category="shopping" data-reward-id="woolworths-card">
+                <div class="reward-logo">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Woolworths_South_Africa.png/440px-Woolworths_South_Africa.png" alt="Woolworths Logo">
+                </div>
+                <div class="reward-details">
+                    <h3>Woolworths Gift Card</h3>
+                    <p>R150 gift card for Woolworths</p>
+                    <div class="reward-meta">
+                        <span class="reward-points">3,000 pts</span>
+                        <button class="redeem-btn">Redeem</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Entertainment Category -->
+            <div class="reward-card" data-category="entertainment" data-reward-id="netflix-subscription">
+                <div class="reward-logo">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Netflix_2015_logo.svg/1597px-Netflix_2015_logo.svg.png?20190206123158" alt="Netflix Logo">
+                </div>
+                <div class="reward-details">
+                    <h3>Netflix 1-Month Subscription</h3>
+                    <p>One month of Netflix Standard plan</p>
+                    <div class="reward-meta">
+                        <span class="reward-points">2,500 pts</span>
+                        <button class="redeem-btn">Redeem</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="reward-card" data-category="entertainment" data-reward-id="movie-tickets">
+                <div class="reward-logo">
+                    <img src="https://th.bing.com/th/id/R.05a5d3000c5c53c37c6aa3946412aea3?rik=hx7Vw5SwnkNjrA&pid=ImgRaw&r=0" alt="Ster-Kinekor Logo">
+                </div>
+                <div class="reward-details">
+                    <h3>Movie Tickets</h3>
+                    <p>Two Ster-Kinekor movie tickets</p>
+                    <div class="reward-meta">
+                        <span class="reward-points">1,800 pts</span>
+                        <button class="redeem-btn">Redeem</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Travel Category -->
+            <div class="reward-card" data-category="travel" data-reward-id="uber-ride">
+                <div class="reward-logo">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Uber_logo_2018.svg/1600px-Uber_logo_2018.svg.png?20180914002846" alt="Uber Logo">
+                </div>
+                <div class="reward-details">
+                    <h3>Uber Ride Voucher</h3>
+                    <p>R100 credit for your next Uber ride</p>
+                    <div class="reward-meta">
+                        <span class="reward-points">2,000 pts</span>
+                        <button class="redeem-btn">Redeem</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="reward-card" data-category="food" data-reward-id="ubereats-voucher">
+                <div class="reward-logo">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b3/Uber_Eats_2020_logo.svg/292px-Uber_Eats_2020_logo.svg.png?20200529181853" alt="Uber Eats Logo">
+                </div>
+                <div class="reward-details">
+                    <h3>UberEats Voucher</h3>
+                    <p>R150 off your next UberEats order</p>
+                    <div class="reward-meta">
+                        <span class="reward-points">3,000 pts</span>
+                        <button class="redeem-btn">Redeem</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="redemption-modal" id="redemption-modal">
+            <div class="modal-content">
+                <span class="close-modal">&times;</span>
+                <h2>Confirm Redemption</h2>
+                <div class="redemption-details">
+                    <p>You are about to redeem:</p>
+                    <h3 id="modal-reward-name">Reward Name</h3>
+                    <p id="modal-reward-points">0 points</p>
+                    <div class="current-points">
+                        <p>Your current balance: <span id="modal-current-points">0</span> points</p>
+                        <p>Balance after redemption: <span id="modal-remaining-points">0</span> points</p>
+                    </div>
+                </div>
+                <div class="modal-actions">
+                    <button class="btn btn-cancel">Cancel</button>
+                    <button class="btn btn-confirm">Confirm Redemption</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="marketplace.js"></script>
+   
+   
+
+</body>
+</html>

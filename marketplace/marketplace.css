@@ -1,0 +1,400 @@
+:root {
+    --mukuru-charcoal: #0d0d0d;
+    --mukuru-dark: #1a1a1a;
+    --mukuru-card: #222;
+    --mukuru-orange: #f05423;
+    --mukuru-orange-light: rgba(255, 102, 0, 0.15);
+    --mukuru-white: #fff;
+    --mukuru-light-text: #e0e0e0;
+    --mukuru-medium-text: #a0a0a0;
+    --mukuru-green: #4cd964;
+    --mukuru-purple: #8A2BE2;
+     --mukuru-grey: #505253;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    background: var(--mukuru-card);
+    font-family: "Segoe UI", Arial, sans-serif;
+    color: var(--mukuru-white);
+    min-height: 100vh;
+    padding: 15px;
+    line-height: 1.5;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--mukuru-orange);
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+nav {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+nav a {
+    color: var(--mukuru-orange);
+    font-weight: 600;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+nav a:hover {
+    background: var(--mukuru-orange-light);
+    transform: translateY(-2px);
+}
+
+.marketplace-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.marketplace-header h1 {
+    color: var(--mukuru-orange);
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.marketplace-header p {
+    color: var(--mukuru-medium-text);
+    margin-bottom: 1.5rem;
+}
+
+.points-display {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: var(--mukuru-orange);
+    margin: 1rem auto;
+    padding: 1rem 2rem;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 16px;
+    border: 2px solid var(--mukuru-orange);
+    display: inline-block;
+}
+
+.category-nav {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+.category-btn {
+    background: var(--mukuru-dark);
+    color: var(--mukuru-light-text);
+    border: none;
+    padding: 0.7rem 1.2rem;
+    border-radius: 30px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.category-btn:hover, .category-btn.active {
+    background: var(--mukuru-orange);
+    color: var(--mukuru-white);
+    transform: translateY(-2px);
+}
+
+.rewards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.reward-card {
+    background: var(--mukuru-dark);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    border: 1px solid var(--mukuru-orange);
+    position: relative;
+}
+
+.reward-card:hover:not(.redeemed) {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+    border-color: var(--mukuru-orange);
+}
+
+/* Redeemed card styles */
+.reward-card.redeemed {
+    background: var(--mukuru-grey);
+    border-color: var(--mukuru-grey);
+    opacity: 0.7;
+}
+
+.reward-card.redeemed .reward-logo {
+    background: rgba(0, 0, 0, 0.2);
+    opacity: 0.6;
+}
+
+.reward-card.redeemed .reward-details h3 {
+    color: var(--mukuru-medium-text);
+}
+
+.reward-card.redeemed .reward-details p {
+    color: #707070;
+}
+
+.reward-card.redeemed .reward-points {
+    color: var(--mukuru-medium-text);
+}
+
+.redeemed-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: var(--mukuru-green);
+    color: var(--mukuru-white);
+    padding: 0.3rem 0.7rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    z-index: 2;
+}
+
+.reward-logo {
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 1rem;
+}
+
+.reward-logo img {
+    max-height: 80px;
+    max-width: 80%;
+    object-fit: contain;
+}
+
+.reward-details {
+    padding: 1.5rem;
+}
+
+.reward-details h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    color: var(--mukuru-white);
+}
+
+.reward-details p {
+    color: var(--mukuru-medium-text);
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    min-height: 40px;
+}
+
+.reward-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.reward-points {
+    color: var(--mukuru-orange);
+    font-weight: bold;
+}
+
+.redeem-btn {
+    background: var(--mukuru-orange);
+    color: var(--mukuru-white);
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.redeem-btn:hover {
+    background: var(--mukuru-orange);
+    transform: translateY(-2px);
+}
+
+.redeem-btn:disabled {
+    background: var(--mukuru-grey);
+    color: var(--mukuru-medium-text);
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* Modal Styles */
+.redemption-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(13, 13, 13, 0.9);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background: var(--mukuru-dark);
+    border-radius: 12px;
+    padding: 2rem;
+    width: 90%;
+    max-width: 500px;
+    position: relative;
+    border: 1px solid var(--mukuru-orange);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.close-modal {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 1.5rem;
+    color: var(--mukuru-medium-text);
+    cursor: pointer;
+}
+
+.close-modal:hover {
+    color: var(--mukuru-white);
+}
+
+.redemption-details {
+    margin: 1.5rem 0;
+}
+
+.redemption-details h3 {
+    color: var(--mukuru-orange);
+    margin: 0.5rem 0;
+}
+
+.current-points {
+    background: rgba(0, 0, 0, 0.2);
+    padding: 1rem;
+    border-radius: 8px;
+    margin: 1rem 0;
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.btn {
+    padding: 0.7rem 1.5rem;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+}
+
+.btn-cancel {
+    background: transparent;
+    border: 1px solid var(--mukuru-medium-text);
+    color: var(--mukuru-medium-text);
+}
+
+.btn-confirm {
+    background: var(--mukuru-orange);
+    color: var(--mukuru-white);
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+}
+
+/* Animations */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.pulse {
+    animation: pulse 2s infinite;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    nav {
+        justify-content: center;
+    }
+    
+    .category-nav {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        padding-bottom: 1rem;
+        justify-content: flex-start;
+    }
+    
+    .category-btn {
+        white-space: nowrap;
+    }
+    
+    .rewards-container {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    }
+}
+
+@media (max-width: 480px) {
+    .marketplace-header h1 {
+        font-size: 2rem;
+    }
+    
+    .points-display {
+        font-size: 2rem;
+        padding: 0.8rem 1.5rem;
+    }
+    
+    .rewards-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .modal-content {
+        padding: 1.5rem;
+        width: 95%;
+    }
+
+
+    
+}

@@ -142,6 +142,14 @@
         .manage-btn:hover {
             background: #444;
         }
+        
+        .marketplace-btn {
+            background: #8A2BE2;
+        }
+
+        .marketplace-btn:hover {
+            background: #9A3BF2;
+        }
 
         /* Points section */
         #balance {

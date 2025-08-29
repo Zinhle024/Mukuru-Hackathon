@@ -1,13 +1,7 @@
-body {
-    background: #1a1a1a;
-}
-/* Signup Page Specific Styles */
-
-
 .signup-container {
     display: flex;
     flex-direction: row;
-    align-items: center; /* Center align items vertically */
+    align-items: stretch;
     max-width: 1200px;
     height: 100vh;
     margin: 0 auto;
@@ -54,23 +48,13 @@ body {
 
 .signup-card {
     flex: 1;
-    background: #222;
-    border-radius: 12px;
-    box-shadow: 0 6px 20px rgba(255, 136, 0, 0.25);
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
     padding: 30px;
     overflow-y: auto;
     max-height: 90vh;
-    animation: slideIn 0.5s ease-out, fadeIn 0.8s ease;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-    align-self: stretch; /* Ensure card stretches to container height */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.signup-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 12px 32px rgba(255, 136, 0, 0.35);
+    animation: slideIn 0.5s ease-out;
 }
 
 .form-row {
@@ -92,25 +76,22 @@ label {
     display: block;
     margin-bottom: 5px;
     font-weight: 500;
-    color: #e0e0e0;
+    color: #333;
 }
 
 input, select {
     width: 100%;
     padding: 12px;
-    background: #111;
-    color: #fff;
-    border: 1px solid #333;
-    border-radius: 8px;
-    font-size: 1rem;
-    transition: border 0.3s ease, background 0.3s ease;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: border-color 0.3s;
 }
 
 input:focus, select:focus {
-    border: 1px solid #ff8800;
-    background: #1a1a1a;
+    border-color: #0066cc;
     outline: none;
-    box-shadow: none;
+    box-shadow: 0 0 0 2px rgba(0, 102, 204, 0.2);
 }
 
 .terms-checkbox {
@@ -127,38 +108,35 @@ input:focus, select:focus {
 .terms-checkbox label {
     font-size: 14px;
     margin-bottom: 0;
-    color: #a0a0a0;
 }
 
 .signup-btn {
     width: 100%;
     padding: 14px;
-    background: #ff8800;
-    color: #fff;
+    background-color: #0066cc;
+    color: white;
     border: none;
-    border-radius: 8px;
-    font-size: 1rem;
+    border-radius: 5px;
+    font-size: 16px;
     font-weight: 600;
     cursor: pointer;
-    transition: background 0.3s ease, transform 0.2s ease;
-    box-shadow: 0 2px 8px rgba(255, 136, 0, 0.15);
+    transition: background-color 0.3s;
     margin-top: 10px;
 }
 
 .signup-btn:hover {
-    background: #ff6600;
-    transform: translateY(-2px);
+    background-color: #0055aa;
 }
 
 .login-link {
     text-align: center;
     margin-top: 20px;
     font-size: 14px;
-    color: #a0a0a0;
+    color: #666;
 }
 
 .login-link a {
-    color: #3399ff;
+    color: #0066cc;
     text-decoration: none;
     font-weight: 600;
 }
@@ -178,12 +156,6 @@ input.error-input, select.error-input {
     border-color: #e74c3c;
 }
 
-/* Animations */
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(8px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
 /* Responsive styles */
 @media (min-width: 768px) {
     .signup-image-container {
@@ -192,51 +164,21 @@ input.error-input, select.error-input {
 }
 
 @media (max-width: 767px) {
-  html, body {
-    height: auto;
-    min-height: 100vh;
-    overflow-x: hidden;
-  }
-  .signup-container {
-    flex-direction: column;
-    align-items: stretch;
-    padding: 10px;
-    height: auto;
-    gap: 15px;
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
-  }
-  .signup-image-container,
-  .signup-card {
-    width: 100%;
-    min-width: 0;
-    height: auto;
-    border-radius: 10px;
-    box-shadow: 0 6px 20px rgba(255, 136, 0, 0.15);
-    margin: 0;
-    padding: 16px;
-  }
-  .signup-image-container {
-    display: block;
-    margin-bottom: 10px;
-    min-height: 180px;
-  }
-  .signup-card {
-    padding: 16px;
-  }
-  .form-row {
-    flex-direction: column;
-    gap: 0;
-  }
-  .greeting-heading {
-    font-size: 1.3rem;
-  }
-  input, select {
-    font-size: 1rem;
-    padding: 10px;
-  }
-  .signup-btn {
-    font-size: 1rem;
-    padding: 12px;
-  }
+    .signup-container {
+        flex-direction: column;
+        padding: 10px;
+    }
+    
+    .signup-card {
+        padding: 20px;
+    }
+    
+    .form-row {
+        flex-direction: column;
+        gap: 0;
+    }
+    
+    .greeting-heading {
+        font-size: 1.5rem;
+    }
 }

@@ -38,6 +38,19 @@ document.getElementById('loginForm').addEventListener('submit', function(e) {
     }
 });
 
+// Add marketplace button animation
+const marketplaceLink = document.querySelector('.marketplace-link');
+if (marketplaceLink) {
+    marketplaceLink.addEventListener('mouseenter', function() {
+        this.style.transform = 'scale(1.05)';
+        this.style.transition = 'transform 0.3s ease';
+    });
+    
+    marketplaceLink.addEventListener('mouseleave', function() {
+        this.style.transform = 'scale(1)';
+    });
+}
+
 function showAlert(message) {
     alert(message);
 
