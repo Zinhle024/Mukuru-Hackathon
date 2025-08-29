@@ -18,25 +18,49 @@ app = FastAPI()
 
 class CreateUserRequest(BaseModel):
     email: EmailStr
+    password: str
     balance: float = 1000000
     orange_coins: int = 0
     phone: str
 
+class LoginUser(BaseModel):
+    email: EmailStr
+    password: str
+    send_via: str = "email" 
+
 @app.post("/create-user/")
 def create_user(request: CreateUserRequest):
     command.execute("SELECT * FROM users WHERE email=?", (request.email,))
-    existing_user = command.fetchone()
-    if existing_user:
+    if command.fetchone():
         raise HTTPException(status_code=400, detail="User already exists")
-    
-    command.execute(
-        "INSERT INTO users(email, balance, orange_coins,phone) VALUES (?, ? , ?, ?)",
-        (request.email, request.balance, request.orange_coins, request.phone)
-    )
 
+    hashed_pw = password_context.hash(request.password)
+    formatted_number = format_number(request.phone)
+
+    command.execute(
+        "INSERT INTO users(email, balance, orange_coins, password, phone) VALUES (?, ?, ?, ?, ?)",
+        (request.email, request.balance, request.orange_coins, hashed_pw, formatted_number)
+    )
+    connection.commit()
+    return {"message": f"User {request.email} created successfully with balance R{request.balance}"}
+
+@app.post("/login/")
+def login(user: LoginUser):
+    command.execute("SELECT password, phone FROM users WHERE email=?", (user.email,))
+    result = command.fetchone()
+    if not result or not password_context.verify(user.password, result[0]):
+        raise HTTPException(status_code=401, detail="Invalid credentials")
+
+    otp = str(random.randint(100000, 999999))
+    command.execute("UPDATE users SET otp=? WHERE email=?", (otp, user.email))
     connection.commit()
 
-    return {"message": f"User {request.email} created with balance R{request.balance}"}
+    if user.send_via == "sms":
+        send_sms(result[1], otp)
+    else:
+        send_email(user.email, otp)
+
+    return {"message": f"OTP sent via {user.send_via}"}
 
 
 
